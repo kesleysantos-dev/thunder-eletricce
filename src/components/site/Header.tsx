@@ -23,8 +23,10 @@ export function Header({ whatsapp }: { whatsapp: string }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/85 backdrop-blur-xl border-b border-border" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 md:bg-background/95 md:backdrop-blur-xl md:border-b md:border-border ${
+        scrolled
+          ? "bg-background/85 backdrop-blur-xl border-b border-border"
+          : "bg-transparent md:bg-background/95"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
