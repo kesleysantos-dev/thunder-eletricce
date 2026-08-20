@@ -20,7 +20,7 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-38%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const scrimOpacity = useTransform(scrollYProgress, [0, 1], [0.55, 0.95]);
+  const scrimOpacity = useTransform(scrollYProgress, [0, 1], [0.32, 0.9]);
 
   useEffect(() => {
     const id = setInterval(() => setActive((i) => (i + 1) % CLIPS.length), SCENE_MS);
