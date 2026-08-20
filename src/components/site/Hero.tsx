@@ -27,6 +27,18 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    const play = () => {
+      ref.current?.querySelectorAll("video").forEach((v) => {
+        v.muted = true;
+        void v.play().catch(() => {});
+      });
+    };
+    play();
+    document.addEventListener("pointerdown", play, { once: true });
+    return () => document.removeEventListener("pointerdown", play);
+  }, []);
+
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[640px] overflow-hidden">
       <motion.div style={{ y: videoY }} className="absolute inset-0 -top-[10%] h-[120%]">
@@ -51,9 +63,10 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(120%_80%_at_20%_20%,transparent_10%,var(--background)_95%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_right,var(--background)_2%,color-mix(in_oklab,var(--background)_55%,transparent)_45%,transparent_80%)]"
         aria-hidden
       />
+
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-[image:var(--gradient-fade)]"
         aria-hidden
