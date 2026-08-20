@@ -74,7 +74,7 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-5 sm:px-8"
+        className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-5 pb-12 pt-28 sm:px-8 sm:pt-32"
       >
         <motion.img
           src={logo.url}
