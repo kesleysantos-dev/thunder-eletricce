@@ -79,7 +79,7 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
         <motion.img
           src={logo.url}
           alt="Thunder Eletric Fortaleza"
-          className="mb-7 h-20 w-20 sm:h-24 sm:w-24"
+          className="mb-7 h-16 w-auto self-start sm:h-20"
           initial={{ opacity: 0, scale: 0.85, rotate: -12 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
