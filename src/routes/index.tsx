@@ -378,7 +378,7 @@ function Index() {
       <footer className="border-t border-border bg-surface/50">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 md:grid-cols-3">
           <div>
-            <img src={logo.url} alt="Thunder Eletric Fortaleza" className="h-14 w-14" />
+            <img src={logo.url} alt="Thunder Eletric Fortaleza" className="h-12 w-auto" />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Thunder Eletric Fortaleza — modelos 100% elétricos, peças, garantia e assistência
               técnica.
