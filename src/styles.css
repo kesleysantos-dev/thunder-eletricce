@@ -126,6 +126,13 @@
   border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @keyframes marquee-x {
   from {
     transform: translateX(0);
