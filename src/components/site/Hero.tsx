@@ -104,8 +104,8 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
           transition={{ delay: 0.65, duration: 0.8 }}
           className="mt-6 max-w-xl text-base text-foreground/75 sm:text-lg"
         >
-          Scooters e Triciclos 100% elétricos com garantia, assistência técnica própria e entrega em
-          toda a Grande Fortaleza. Rode o mês inteiro por menos de R$ 30 de energia.
+          Na Thunder, você tem loja física, oficina própria, peças em estoque e uma equipe de
+          verdade para cuidar de você também depois da compra.
         </motion.p>
 
         <motion.div
