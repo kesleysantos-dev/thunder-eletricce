@@ -480,6 +480,23 @@ export function Models({ whatsapp }: { whatsapp: string }) {
   const [inView, setInView] = useState(false);
   const [openModel, setOpenModel] = useState<Model | null>(null);
 
+  // The Header's "Modelos" mega menu dispatches this to jump straight to a
+  // model's card (and open its detail modal) from anywhere on the site.
+  useEffect(() => {
+    const onOpenModel = (e: Event) => {
+      const name = (e as CustomEvent<string>).detail;
+      const index = MODELS.findIndex((m) => m.name === name);
+      if (index === -1) return;
+      const cards = getCards();
+      const card = cards[MODELS.length + index];
+      card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      setOpenModel(MODELS[index]);
+    };
+    window.addEventListener("thunder:open-model", onOpenModel);
+    return () => window.removeEventListener("thunder:open-model", onOpenModel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const getCards = () =>
     Array.from(trackRef.current?.querySelectorAll<HTMLElement>("[data-card]") ?? []);
 

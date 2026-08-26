@@ -129,7 +129,10 @@ export function Header({ whatsapp }: { whatsapp: string }) {
                   <a
                     key={name}
                     href="#modelos"
-                    onClick={() => setModelsMenuOpen(false)}
+                    onClick={() => {
+                      setModelsMenuOpen(false);
+                      window.dispatchEvent(new CustomEvent("thunder:open-model", { detail: name }));
+                    }}
                     className="group block"
                   >
                     <div className="aspect-[3/4] overflow-hidden rounded-xl bg-surface-2">
