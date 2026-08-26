@@ -295,7 +295,7 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
     <motion.article
       ref={ref}
       data-card
-      className="group relative w-[68vw] max-w-[270px] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-surface hairline sm:w-[290px] lg:w-[300px]"
+      className="group relative flex w-[68vw] max-w-[270px] shrink-0 cursor-pointer flex-col snap-start overflow-hidden rounded-2xl bg-surface hairline sm:w-[290px] lg:w-[300px]"
     >
       <div className="relative aspect-[3/4] overflow-hidden bg-surface-2">
         <motion.img
@@ -314,7 +314,7 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
         )}
       </div>
 
-      <div className="relative -mt-7 px-4 pb-5">
+      <div className="relative -mt-7 flex flex-1 flex-col px-4 pb-5">
         <h3 className="display text-2xl">{model.name}</h3>
         {model.note && (
           <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{model.note}</p>
@@ -331,6 +331,8 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
             </div>
           ))}
         </dl>
+
+        <div className="flex-1" />
 
         <a
           href={whatsapp}
