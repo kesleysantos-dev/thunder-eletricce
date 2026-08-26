@@ -23,9 +23,9 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Models } from "@/components/site/Models";
 import { Reveal } from "@/components/site/Reveal";
-import moto2 from "@/assets/moto-2.jpg.asset.json";
-import moto3 from "@/assets/moto-3.jpg.asset.json";
-import logo from "@/assets/logo.png.asset.json";
+import moto2 from "@/assets/moto-2.jpg";
+import moto3 from "@/assets/moto-3.jpg";
+import logo from "@/assets/logo.png";
 
 const WHATSAPP =
   "https://wa.me/5585999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas.";
@@ -139,7 +139,7 @@ function ParallaxBanner() {
     <section ref={ref} className="relative h-[80vh] min-h-[520px] overflow-hidden">
       <motion.img
         style={{ y }}
-        src={moto2.url}
+        src={moto2}
         alt="Moto elétrica vermelha da Thunder Eletric"
         loading="lazy"
         className="absolute inset-0 h-[128%] w-full object-cover"
@@ -347,7 +347,7 @@ function Index() {
 
         <section className="relative overflow-hidden">
           <img
-            src={moto3.url}
+            src={moto3}
             alt="Scooter elétrica azul"
             loading="lazy"
             className="animate-slow-zoom absolute inset-0 h-full w-full object-cover opacity-25"
@@ -378,7 +378,7 @@ function Index() {
       <footer className="border-t border-border bg-surface/50">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 md:grid-cols-3">
           <div>
-            <img src={logo.url} alt="Thunder Eletric Fortaleza" className="h-12 w-auto" />
+            <img src={logo} alt="Thunder Eletric Fortaleza" className="h-12 w-auto" />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Thunder Eletric Fortaleza — modelos 100% elétricos, peças, garantia e assistência
               técnica.

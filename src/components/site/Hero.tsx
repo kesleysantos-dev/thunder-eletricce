@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ChevronDown, Zap } from "lucide-react";
 
-import heroVideo from "@/assets/hero.mp4.asset.json";
-import heroVideo2 from "@/assets/hero-2.mp4.asset.json";
-import logo from "@/assets/logo.png.asset.json";
+import heroVideo from "@/assets/hero.mp4";
+import heroVideo2 from "@/assets/hero-2.mp4";
 
-const CLIPS = [heroVideo.url, heroVideo2.url];
+const CLIPS = [heroVideo, heroVideo2];
 const SCENE_MS = 8200;
 
 export function Hero({ whatsapp }: { whatsapp: string }) {
@@ -74,17 +73,8 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-5 pb-12 pt-28 sm:px-8 sm:pt-32"
+        className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-5 pb-12 pt-28 sm:px-8 sm:pt-32 [@media(max-height:760px)]:justify-start [@media(max-height:760px)]:pt-20 [@media(max-height:760px)]:pb-6"
       >
-        <motion.img
-          src={logo.url}
-          alt="Thunder Eletric Fortaleza"
-          className="mb-7 h-16 w-auto self-start sm:h-20"
-          initial={{ opacity: 0, scale: 0.85, rotate: -12 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-        />
-
         <motion.span
           initial={{ opacity: 0, x: -16 }}
           animate={{ opacity: 1, x: 0 }}
@@ -123,7 +113,7 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-9 flex flex-wrap items-center gap-3"
+          className="mt-9 flex flex-wrap items-center gap-3 [@media(max-height:760px)]:mt-6"
         >
           <a
             href={whatsapp}
