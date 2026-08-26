@@ -160,9 +160,8 @@ function ParallaxBanner() {
             Sentiu o torque, <span className="text-gradient-brand">não volta atrás.</span>
           </h2>
           <p className="mt-5 text-foreground/75">
-            Venha na loja e pilote antes de decidir. Em 5 minutos você entende por que mais
-            de 10 mil pessoas acompanham a <span translate="no">Thunder</span> aqui em
-            Fortaleza.
+            Venha na loja e pilote antes de decidir. Em 5 minutos você entende por que mais de 10
+            mil pessoas acompanham a <span translate="no">Thunder</span> aqui em Fortaleza.
           </p>
           <a
             href={WHATSAPP}
@@ -181,7 +180,7 @@ function ParallaxBanner() {
 function Counter({ value, suffix, label }: { value: string; suffix?: string; label: string }) {
   return (
     <div className="text-center">
-      <p className="display text-[clamp(2.2rem,6vw,3.6rem)] text-gradient-brand">
+      <p className="display whitespace-nowrap text-[clamp(2.2rem,6vw,3.6rem)] text-gradient-brand">
         {value}
         {suffix}
       </p>
@@ -210,8 +209,8 @@ function Index() {
                 <span className="text-gradient-brand">não é só entrega.</span>
               </h2>
               <p className="mt-5 text-muted-foreground">
-                Muita gente vende moto elétrica pela internet e some depois da venda. Aqui você
-                tem endereço, oficina, peça em estoque e gente pra atender no dia seguinte.
+                Muita gente vende moto elétrica pela internet e some depois da venda. Aqui você tem
+                endereço, oficina, peça em estoque e gente pra atender no dia seguinte.
               </p>
               <div className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-8">
                 <Counter value="10" suffix=" mil" label="Seguidores" />
@@ -378,8 +377,8 @@ function Index() {
                 Sua próxima moto <span className="text-gradient-brand">não usa gasolina.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-foreground/75">
-                Fale agora com um consultor, tire suas dúvidas e garanta condição especial de
-                pronta entrega.
+                Fale agora com um consultor, tire suas dúvidas e garanta condição especial de pronta
+                entrega.
               </p>
               <a
                 href={WHATSAPP}
@@ -399,8 +398,8 @@ function Index() {
           <div>
             <img src={logo} alt="Thunder Eletric Fortaleza" className="h-12 w-auto" />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              <span translate="no">Thunder Eletric</span> Fortaleza — modelos 100% elétricos,
-              peças, garantia e assistência técnica.
+              <span translate="no">Thunder Eletric</span> Fortaleza — modelos 100% elétricos, peças,
+              garantia e assistência técnica.
             </p>
           </div>
           <div className="space-y-3 text-sm text-muted-foreground">
@@ -438,8 +437,8 @@ function Index() {
           </div>
         </div>
         <div className="border-t border-border px-5 py-5 text-center text-xs text-muted-foreground sm:px-8">
-          © {new Date().getFullYear()} <span translate="no">Thunder Eletric</span> Fortaleza.
-          Todos os direitos reservados.
+          © {new Date().getFullYear()} <span translate="no">Thunder Eletric</span> Fortaleza. Todos
+          os direitos reservados.
         </div>
       </footer>
 
