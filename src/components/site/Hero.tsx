@@ -104,9 +104,8 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
           transition={{ delay: 0.65, duration: 0.8 }}
           className="mt-6 max-w-xl text-base text-foreground/75 sm:text-lg"
         >
-          Motos e scooters 100% elétricas com garantia, assistência técnica própria e
-          entrega em toda a Grande Fortaleza. Rode o mês inteiro por menos de R$ 30 de
-          energia.
+          Scooters e Triciclos 100% elétricos com garantia, assistência técnica própria e entrega em
+          toda a Grande Fortaleza. Rode o mês inteiro por menos de R$ 30 de energia.
         </motion.p>
 
         <motion.div

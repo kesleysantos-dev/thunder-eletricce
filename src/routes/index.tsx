@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Motos e scooters elétricas em Fortaleza: Bizz, Urban, X13, I5, Joy e mais. Bateria de lítio, garantia, assistência técnica e test drive com pronta entrega.",
+          "Motos e scooters elétricas em Fortaleza: Kasper, Sudu A5, Zenvo, Tank, Joy e mais. Bateria de lítio, garantia, assistência técnica e test drive com pronta entrega.",
       },
       { property: "og:title", content: "Thunder Eletric Fortaleza | Motos Elétricas" },
       {
@@ -100,10 +100,10 @@ const FAQ = [
 
 function Marquee() {
   const items = [
-    "Bizz",
-    "Urban",
-    "X13",
-    "I5",
+    "Kasper",
+    "Sudu A5",
+    "Zenvo",
+    "Tank",
     "Joy",
     "Savage",
     "BE-200",
@@ -297,7 +297,7 @@ function Index() {
               {[
                 {
                   name: "Rafael M.",
-                  text: "Comprei a Bizz pra trabalhar de entrega. Economizo mais de R$ 300 por mês e nunca mais parei no posto.",
+                  text: "Comprei a Kasper pra trabalhar de entrega. Economizo mais de R$ 300 por mês e nunca mais parei no posto.",
                 },
                 {
                   name: "Juliana S.",
@@ -305,7 +305,7 @@ function Index() {
                 },
                 {
                   name: "Carlos A.",
-                  text: "A X13 impressiona. Silenciosa, rápida no arranque e o pessoal da loja explicou tudo sobre a bateria de lítio.",
+                  text: "A Zenvo impressiona. Silenciosa, rápida no arranque e o pessoal da loja explicou tudo sobre a bateria de lítio.",
                 },
               ].map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.08}>

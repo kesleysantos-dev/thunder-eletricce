@@ -5,16 +5,19 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  Disc,
   Gauge,
   Route,
+  ShieldCheck,
   Weight,
   Zap,
+  type LucideIcon,
 } from "lucide-react";
 
-import moto1 from "@/assets/moto-1.jpg";
-import moto2 from "@/assets/moto-2.jpg";
-import moto3 from "@/assets/moto-3.jpg";
-import moto4 from "@/assets/moto-4.jpg";
+import kasper from "@/assets/modelos/KASPER.jpeg";
+import suduA5 from "@/assets/modelos/SUDU A5.jpeg";
+import zenvo from "@/assets/modelos/ZENVO.jpeg";
+import tank from "@/assets/modelos/TANK.jpeg";
 import moto5 from "@/assets/moto-5.jpg";
 import moto6 from "@/assets/moto-6.jpg";
 import moto7 from "@/assets/moto-7.jpg";
@@ -28,199 +31,257 @@ import moto14 from "@/assets/moto-14.jpg";
 import moto15 from "@/assets/moto-15.jpg";
 import { Reveal } from "./Reveal";
 
+export type Spec = { icon: LucideIcon; label: string; value: string };
+
 export type Model = {
   name: string;
-  tag: string;
+  tag?: string;
   image: string;
+  note?: string;
+  specs: Spec[];
+};
+
+// Standard spec set used by most models in the line (autonomy/speed/battery/
+// charge time/weight/power). The 4 newest models (Kasper, Sudu A5, Zenvo,
+// Tank) use a different spec set provided by the store — see specsV2 below.
+function specsV1(opts: {
   autonomy: string;
   speed: string;
   battery: string;
   chargeTime: string;
   weight: string;
   power: string;
-  note: string;
-};
+}): Spec[] {
+  return [
+    { icon: Route, label: "Autonomia", value: opts.autonomy },
+    { icon: Gauge, label: "Velocidade", value: opts.speed },
+    { icon: BatteryCharging, label: "Bateria", value: opts.battery },
+    { icon: Clock, label: "Recarga", value: opts.chargeTime },
+    { icon: Weight, label: "Peso", value: opts.weight },
+    { icon: Zap, label: "Potência", value: opts.power },
+  ];
+}
+
+function specsV2(opts: {
+  power: string;
+  battery: string;
+  autonomy: string;
+  loadCapacity: string;
+  security: string;
+  brake: string;
+}): Spec[] {
+  return [
+    { icon: Zap, label: "Motor", value: opts.power },
+    { icon: BatteryCharging, label: "Bateria", value: opts.battery },
+    { icon: Route, label: "Autonomia", value: opts.autonomy },
+    { icon: Weight, label: "Capacidade de carga", value: opts.loadCapacity },
+    { icon: ShieldCheck, label: "Segurança", value: opts.security },
+    { icon: Disc, label: "Freio", value: opts.brake },
+  ];
+}
 
 export const MODELS: Model[] = [
   {
-    name: "Bizz",
-    tag: "A queridinha do dia a dia",
-    image: moto1,
-    autonomy: "até 80 km",
-    speed: "50 km/h",
-    battery: "Lítio 60V 20Ah",
-    chargeTime: "4h",
-    weight: "68 kg",
-    power: "800 W",
-    note: "Leve, ágil e perfeita pra quem troca a moto a gasolina pela primeira vez.",
+    name: "Kasper",
+    image: kasper,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
   },
   {
-    name: "X13",
-    tag: "Presença de esportiva",
-    image: moto2,
-    autonomy: "até 90 km",
-    speed: "60 km/h",
-    battery: "Lítio 72V 20Ah",
-    chargeTime: "5h",
-    weight: "75 kg",
-    power: "1.200 W",
-    note: "Design agressivo, freio a disco e torque de sobra pra subida de ladeira.",
+    name: "Sudu A5",
+    image: suduA5,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "180 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
   },
   {
-    name: "Urban",
-    tag: "Conforto pra dois",
-    image: moto3,
-    autonomy: "até 75 km",
-    speed: "50 km/h",
-    battery: "Lítio 60V 20Ah",
-    chargeTime: "4h",
-    weight: "72 kg",
-    power: "800 W",
-    note: "Banco largo, porta-malas embaixo do assento e suspensão macia.",
+    name: "Zenvo",
+    image: zenvo,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
   },
   {
-    name: "I5 Savage",
-    tag: "Robusta e off-road",
-    image: moto4,
-    autonomy: "até 100 km",
-    speed: "65 km/h",
-    battery: "Lítio 72V 30Ah",
-    chargeTime: "6h",
-    weight: "85 kg",
-    power: "1.500 W",
-    note: "Pneus largos, baú incluso e estrutura reforçada pra trabalho pesado.",
+    name: "Tank",
+    image: tank,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
   },
   {
     name: "Joy",
     tag: "Leveza no trajeto",
     image: moto5,
-    autonomy: "até 70 km",
-    speed: "50 km/h",
-    battery: "Lítio 60V 20Ah",
-    chargeTime: "4h",
-    weight: "65 kg",
-    power: "700 W",
     note: "Compacta e fácil de pilotar — ideal pro trabalho, faculdade e corre do dia.",
+    specs: specsV1({
+      autonomy: "até 70 km",
+      speed: "50 km/h",
+      battery: "Lítio 60V 20Ah",
+      chargeTime: "4h",
+      weight: "65 kg",
+      power: "700 W",
+    }),
   },
   {
     name: "BE-200",
     tag: "Torque silencioso",
     image: moto6,
-    autonomy: "até 110 km",
-    speed: "80 km/h",
-    battery: "Lítio 72V 32Ah",
-    chargeTime: "6h",
-    weight: "95 kg",
-    power: "2.000 W",
     note: "Naked musculosa com arrancada forte, painel digital e postura de big bike.",
+    specs: specsV1({
+      autonomy: "até 110 km",
+      speed: "80 km/h",
+      battery: "Lítio 72V 32Ah",
+      chargeTime: "6h",
+      weight: "95 kg",
+      power: "2.000 W",
+    }),
   },
   {
     name: "BE-300",
     tag: "Esportiva de verdade",
     image: moto7,
-    autonomy: "até 120 km",
-    speed: "100 km/h",
-    battery: "Lítio 72V 40Ah",
-    chargeTime: "7h",
-    weight: "110 kg",
-    power: "3.000 W",
     note: "Carenada, agressiva e a mais rápida da linha. Pra quem quer emoção pura.",
+    specs: specsV1({
+      autonomy: "até 120 km",
+      speed: "100 km/h",
+      battery: "Lítio 72V 40Ah",
+      chargeTime: "7h",
+      weight: "110 kg",
+      power: "3.000 W",
+    }),
   },
   {
     name: "HE-6",
     tag: "Estilo retrô",
     image: moto8,
-    autonomy: "até 85 km",
-    speed: "60 km/h",
-    battery: "Lítio 60V 26Ah",
-    chargeTime: "5h",
-    weight: "78 kg",
-    power: "1.000 W",
     note: "Visual clássico de cafe racer com banco em couro e tecnologia elétrica moderna.",
+    specs: specsV1({
+      autonomy: "até 85 km",
+      speed: "60 km/h",
+      battery: "Lítio 60V 26Ah",
+      chargeTime: "5h",
+      weight: "78 kg",
+      power: "1.000 W",
+    }),
   },
   {
     name: "HE-15",
     tag: "Pra qualquer terreno",
     image: moto9,
-    autonomy: "até 95 km",
-    speed: "70 km/h",
-    battery: "Lítio 72V 30Ah",
-    chargeTime: "6h",
-    weight: "88 kg",
-    power: "1.500 W",
     note: "Suspensão longa e pneus de cravo pra encarar terra, areia e estrada de chão.",
+    specs: specsV1({
+      autonomy: "até 95 km",
+      speed: "70 km/h",
+      battery: "Lítio 72V 30Ah",
+      chargeTime: "6h",
+      weight: "88 kg",
+      power: "1.500 W",
+    }),
   },
   {
     name: "Triciclo K3",
     tag: "Carga e estabilidade",
     image: moto11,
-    autonomy: "até 90 km",
-    speed: "45 km/h",
-    battery: "Lítio 72V 32Ah",
-    chargeTime: "6h",
-    weight: "140 kg",
-    power: "1.200 W",
     note: "Baú grande, três rodas e estabilidade total pra entregas e vendas ambulantes.",
+    specs: specsV1({
+      autonomy: "até 90 km",
+      speed: "45 km/h",
+      battery: "Lítio 72V 32Ah",
+      chargeTime: "6h",
+      weight: "140 kg",
+      power: "1.200 W",
+    }),
   },
   {
     name: "Urban GT",
     tag: "Compacta e esperta",
     image: moto10,
-    autonomy: "até 60 km",
-    speed: "45 km/h",
-    battery: "Lítio 48V 20Ah",
-    chargeTime: "4h",
-    weight: "58 kg",
-    power: "500 W",
     note: "A porta de entrada da mobilidade elétrica: leve, econômica e dispensa CNH.",
+    specs: specsV1({
+      autonomy: "até 60 km",
+      speed: "45 km/h",
+      battery: "Lítio 48V 20Ah",
+      chargeTime: "4h",
+      weight: "58 kg",
+      power: "500 W",
+    }),
   },
   {
     name: "X13 Sport",
     tag: "Topo de linha",
     image: moto12,
-    autonomy: "até 130 km",
-    speed: "110 km/h",
-    battery: "Lítio 72V 45Ah",
-    chargeTime: "7h",
-    weight: "98 kg",
-    power: "3.500 W",
     note: "A mais tecnológica: modos de pilotagem, iluminação full LED e freios ABS.",
+    specs: specsV1({
+      autonomy: "até 130 km",
+      speed: "110 km/h",
+      battery: "Lítio 72V 45Ah",
+      chargeTime: "7h",
+      weight: "98 kg",
+      power: "3.500 W",
+    }),
   },
   {
     name: "Joy Plus",
     tag: "Mais autonomia",
     image: moto13,
-    autonomy: "até 140 km",
-    speed: "90 km/h",
-    battery: "Lítio 72V 40Ah",
-    chargeTime: "6h",
-    weight: "92 kg",
-    power: "2.000 W",
     note: "Maxi scooter com para-brisa e banco touring pra quem roda o dia inteiro.",
+    specs: specsV1({
+      autonomy: "até 140 km",
+      speed: "90 km/h",
+      battery: "Lítio 72V 40Ah",
+      chargeTime: "6h",
+      weight: "92 kg",
+      power: "2.000 W",
+    }),
   },
   {
     name: "Savage Pro",
     tag: "Trabalho pesado",
     image: moto14,
-    autonomy: "até 105 km",
-    speed: "75 km/h",
-    battery: "Lítio 72V 32Ah",
-    chargeTime: "6h",
-    weight: "100 kg",
-    power: "1.800 W",
     note: "Supermoto parruda, pronta pra ladeira, garupa, peso e uso intenso diário.",
+    specs: specsV1({
+      autonomy: "até 105 km",
+      speed: "75 km/h",
+      battery: "Lítio 72V 32Ah",
+      chargeTime: "6h",
+      weight: "100 kg",
+      power: "1.800 W",
+    }),
   },
   {
     name: "Cargo K1",
     tag: "Parceira do entregador",
     image: moto15,
-    autonomy: "até 100 km",
-    speed: "55 km/h",
-    battery: "Lítio 60V 30Ah",
-    chargeTime: "5h",
-    weight: "82 kg",
-    power: "1.200 W",
     note: "Baú incluso e autonomia pra jornada completa de entregas sem recarregar.",
+    specs: specsV1({
+      autonomy: "até 100 km",
+      speed: "55 km/h",
+      battery: "Lítio 60V 30Ah",
+      chargeTime: "5h",
+      weight: "82 kg",
+      power: "1.200 W",
+    }),
   },
 ];
 
@@ -235,34 +296,31 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
       data-card
       className="group relative w-[68vw] max-w-[270px] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-surface hairline sm:w-[290px] lg:w-[300px]"
     >
-      <div className="relative aspect-[4/3.2] overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden bg-surface-2">
         <motion.img
           style={{ y }}
           src={model.image}
           alt={`Moto elétrica ${model.name} na Thunder Eletric Fortaleza`}
           loading="lazy"
           draggable={false}
-          className="absolute inset-0 h-[112%] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
+          className="absolute inset-0 h-full w-full object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--surface)_4%,transparent_55%)]" />
-        <span className="absolute left-3 top-3 rounded-full bg-background/70 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-brand-hot backdrop-blur">
-          {model.tag}
-        </span>
+        {model.tag && (
+          <span className="absolute left-3 top-3 rounded-full bg-background/70 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-brand-hot backdrop-blur">
+            {model.tag}
+          </span>
+        )}
       </div>
 
       <div className="relative -mt-7 px-4 pb-5">
         <h3 className="display text-2xl">{model.name}</h3>
-        <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{model.note}</p>
+        {model.note && (
+          <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{model.note}</p>
+        )}
 
         <dl className="mt-3.5 grid grid-cols-3 gap-2 text-center">
-          {[
-            { icon: Route, label: "Autonomia", value: model.autonomy },
-            { icon: Gauge, label: "Velocidade", value: model.speed },
-            { icon: BatteryCharging, label: "Bateria", value: model.battery },
-            { icon: Clock, label: "Recarga", value: model.chargeTime },
-            { icon: Weight, label: "Peso", value: model.weight },
-            { icon: Zap, label: "Potência", value: model.power },
-          ].map((spec) => (
+          {model.specs.map((spec) => (
             <div key={spec.label} className="rounded-lg bg-surface-2 px-1.5 py-2">
               <spec.icon className="mx-auto h-3.5 w-3.5 text-brand" />
               <dt className="mt-1 text-[9px] uppercase tracking-wider text-muted-foreground">
@@ -394,8 +452,8 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            15 modelos em linha: Bizz, Urban, X13, I5, Joy, Savage, BE, HE e triciclos. Todas
-            com bateria de lítio, garantia e assistência aqui em Fortaleza.
+            15 modelos em linha: Kasper, Sudu A5, Zenvo, Tank, Joy, Savage, BE, HE e triciclos.
+            Todas com bateria de lítio, garantia e assistência aqui em Fortaleza.
           </p>
         </Reveal>
       </div>
