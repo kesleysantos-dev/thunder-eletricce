@@ -314,7 +314,7 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
           <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{model.note}</p>
         )}
 
-        <dl className="mt-3.5 grid grid-cols-3 gap-2 text-center">
+        <dl className="mt-3.5 grid grid-cols-3 gap-2 text-center" translate="no">
           {model.specs.map((spec) => (
             <div key={spec.label} className="rounded-lg bg-surface-2 px-1.5 py-2">
               <spec.icon className="mx-auto h-3.5 w-3.5 text-brand" />
