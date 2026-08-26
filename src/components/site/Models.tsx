@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import {
   BatteryCharging,
@@ -11,6 +12,7 @@ import {
   Route,
   ShieldCheck,
   Weight,
+  X,
   Zap,
   type LucideIcon,
 } from "lucide-react";
@@ -278,7 +280,15 @@ export const MODELS: Model[] = [
   },
 ];
 
-function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
+function ModelCard({
+  model,
+  whatsapp,
+  onOpen,
+}: {
+  model: Model;
+  whatsapp: string;
+  onOpen: (model: Model) => void;
+}) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
@@ -287,6 +297,7 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
     <motion.article
       ref={ref}
       data-card
+      onClick={() => onOpen(model)}
       className="group relative flex w-[68vw] max-w-[270px] shrink-0 cursor-pointer flex-col snap-start overflow-hidden rounded-2xl bg-surface hairline sm:w-[290px] lg:w-[300px]"
     >
       <div className="relative aspect-[3/4] overflow-hidden bg-surface-2">
@@ -332,12 +343,114 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
           href={whatsapp}
           target="_blank"
           rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
           className="mt-4 flex w-full items-center justify-center rounded-full border border-brand/50 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-hot transition-all duration-300 hover:bg-gradient-brand hover:text-primary-foreground"
         >
           Ver preço e condições
         </a>
       </div>
     </motion.article>
+  );
+}
+
+function ModelModal({
+  model,
+  whatsapp,
+  onClose,
+}: {
+  model: Model;
+  whatsapp: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  const mid = Math.ceil(model.specs.length / 2);
+  const leftSpecs = model.specs.slice(0, mid);
+  const rightSpecs = model.specs.slice(mid);
+
+  const specList = (specs: Spec[]) => (
+    <dl className="grid grid-cols-2 gap-3 md:grid-cols-1" translate="no">
+      {specs.map((spec) => (
+        <div key={spec.label} className="rounded-xl bg-surface-2 px-4 py-3 text-center md:text-left">
+          <div className="flex items-center justify-center gap-2 md:justify-start">
+            <spec.icon className="h-4 w-4 shrink-0 text-brand" />
+            <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">
+              {spec.label}
+            </dt>
+          </div>
+          <dd className="mt-1 text-sm font-semibold leading-tight">{spec.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={model.name}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 p-4 backdrop-blur-md"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl bg-surface hairline"
+      >
+        <button
+          onClick={onClose}
+          aria-label="Fechar"
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background/70 text-foreground/80 backdrop-blur transition-colors hover:text-brand-hot"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <div className="grid gap-6 p-6 sm:p-10 md:grid-cols-[1fr_1.1fr_1fr] md:items-center md:gap-8">
+          <div className="order-2 md:order-none">{specList(leftSpecs)}</div>
+
+          <div className="order-1 flex flex-col items-center text-center md:order-none">
+            {model.tag && (
+              <span className="rounded-full bg-brand/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-brand-hot">
+                {model.tag}
+              </span>
+            )}
+            <img
+              src={model.image}
+              alt={`Moto elétrica ${model.name} na Thunder Eletric Fortaleza`}
+              className="mt-4 max-h-[42vh] w-auto object-contain"
+            />
+            <h3 className="display mt-4 text-3xl" translate="no">
+              {model.name}
+            </h3>
+            {model.note && <p className="mt-2 max-w-xs text-sm text-muted-foreground">{model.note}</p>}
+          </div>
+
+          <div className="order-3 md:order-none">{specList(rightSpecs)}</div>
+        </div>
+
+        <div className="border-t border-border p-6 sm:p-8">
+          <a
+            href={whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            className="mx-auto flex w-full max-w-sm items-center justify-center rounded-full bg-gradient-brand py-3.5 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
+          >
+            Preços e Condições
+          </a>
+        </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -352,6 +465,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
   const [dragging, setDragging] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [inView, setInView] = useState(false);
+  const [openModel, setOpenModel] = useState<Model | null>(null);
 
   const getCards = () =>
     Array.from(trackRef.current?.querySelectorAll<HTMLElement>("[data-card]") ?? []);
@@ -511,7 +625,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
           }`}
         >
           {LOOPED_MODELS.map((model) => (
-            <ModelCard key={model._key} model={model} whatsapp={whatsapp} />
+            <ModelCard key={model._key} model={model} whatsapp={whatsapp} onOpen={setOpenModel} />
           ))}
         </div>
 
@@ -538,6 +652,10 @@ export function Models({ whatsapp }: { whatsapp: string }) {
           {MODELS.length}
         </span>
       </div>
+
+      {openModel && (
+        <ModelModal model={openModel} whatsapp={whatsapp} onClose={() => setOpenModel(null)} />
+      )}
     </section>
   );
 }
