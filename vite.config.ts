@@ -37,9 +37,10 @@ export default defineConfig(({ mode, command }) => {
       tsConfigPaths({ projects: ["./tsconfig.json"] }),
       // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
       tanstackStart({ server: { entry: "server" } }),
-      // "node-server" runs anywhere Node.js does (Hostinger, HostGator, a VPS, etc).
-      // If you land on Vercel instead, switch this to "vercel" for their native integration.
-      ...(command === "build" ? [nitro({ preset: "node-server" })] : []),
+      // "vercel" targets Vercel's serverless functions (zero-config).
+      // If you move to a plain Node host (Hostinger, HostGator, a VPS, etc),
+      // switch this back to "node-server".
+      ...(command === "build" ? [nitro({ preset: "vercel" })] : []),
       viteReact(),
     ],
   };
