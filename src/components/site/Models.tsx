@@ -24,10 +24,10 @@ import patineteSe90 from "@/assets/modelos/PATINETE SE-90.jpeg";
 import global500 from "@/assets/modelos/GLOBAL 500.jpeg";
 import patineteP8 from "@/assets/modelos/PATINETE P8.jpeg";
 import oggiBigWheel from "@/assets/modelos/OGGI BIG WHEEL 8.0 .jpeg";
-import moto10 from "@/assets/moto-10.jpg";
-import moto11 from "@/assets/moto-11.jpg";
-import moto12 from "@/assets/moto-12.jpg";
-import moto13 from "@/assets/moto-13.jpg";
+import suduA13t from "@/assets/modelos/SUDU A13T.jpeg";
+import yoo from "@/assets/modelos/YOO.jpeg";
+import je8 from "@/assets/modelos/JE-8.jpeg";
+import je2 from "@/assets/modelos/JE-2.jpeg";
 import moto14 from "@/assets/moto-14.jpg";
 import moto15 from "@/assets/moto-15.jpg";
 import { Reveal } from "./Reveal";
@@ -169,7 +169,7 @@ export const MODELS: Model[] = [
       power: "500 W",
       battery: "Chumbo",
       autonomy: "até 30 km",
-      loadCapacity: "120 kg",
+      loadCapacity: "150 kg",
       security: "Trava e alarme",
       brake: "Freio a disco",
     }),
@@ -201,59 +201,51 @@ export const MODELS: Model[] = [
     }),
   },
   {
-    name: "Triciclo K3",
-    tag: "Carga e estabilidade",
-    image: moto11,
-    note: "Baú grande, três rodas e estabilidade total pra entregas e vendas ambulantes.",
-    specs: specsV1({
-      autonomy: "até 90 km",
-      speed: "45 km/h",
-      battery: "Lítio 72V 32Ah",
-      chargeTime: "6h",
-      weight: "140 kg",
-      power: "1.200 W",
+    name: "Sudu A13T",
+    image: suduA13t,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 50 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco na roda dianteira",
     }),
   },
   {
-    name: "Urban GT",
-    tag: "Compacta e esperta",
-    image: moto10,
-    note: "A porta de entrada da mobilidade elétrica: leve, econômica e dispensa CNH.",
-    specs: specsV1({
+    name: "Yoo",
+    image: yoo,
+    specs: specsV2({
+      power: "500 W de pico",
+      battery: "Chumbo ácido",
+      autonomy: "até 30 km",
+      loadCapacity: "130 kg",
+      security: "Faróis em LED",
+      brake: "Freio a tambor",
+    }),
+  },
+  {
+    name: "JE-8",
+    image: je8,
+    specs: specsV2({
+      power: "450 W",
+      battery: "Lítio removível",
       autonomy: "até 60 km",
-      speed: "45 km/h",
-      battery: "Lítio 48V 20Ah",
-      chargeTime: "4h",
-      weight: "58 kg",
-      power: "500 W",
+      loadCapacity: "160 kg",
+      security: "Trava e alarme",
+      brake: "Freio a tambor",
     }),
   },
   {
-    name: "X13 Sport",
-    tag: "Topo de linha",
-    image: moto12,
-    note: "A mais tecnológica: modos de pilotagem, iluminação full LED e freios ABS.",
-    specs: specsV1({
-      autonomy: "até 130 km",
-      speed: "110 km/h",
-      battery: "Lítio 72V 45Ah",
-      chargeTime: "7h",
-      weight: "98 kg",
-      power: "3.500 W",
-    }),
-  },
-  {
-    name: "Joy Plus",
-    tag: "Mais autonomia",
-    image: moto13,
-    note: "Maxi scooter com para-brisa e banco touring pra quem roda o dia inteiro.",
-    specs: specsV1({
-      autonomy: "até 140 km",
-      speed: "90 km/h",
-      battery: "Lítio 72V 40Ah",
-      chargeTime: "6h",
-      weight: "92 kg",
-      power: "2.000 W",
+    name: "JE-2",
+    image: je2,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 60 km",
+      loadCapacity: "160 kg",
+      security: "Trava e alarme",
+      brake: "Freio dianteiro a disco",
     }),
   },
   {

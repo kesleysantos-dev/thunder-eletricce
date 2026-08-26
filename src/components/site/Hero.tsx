@@ -84,7 +84,7 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
           <Zap className="h-3.5 w-3.5" /> Fortaleza · Pronta entrega
         </motion.span>
 
-        <h1 className="display max-w-3xl text-[clamp(2.9rem,9vw,6.5rem)]">
+        <h1 className="display max-w-3xl text-[clamp(2.9rem,9vw,6.5rem)]" translate="no">
           {["A cidade", "é sua.", "Sem gasolina."].map((line, i) => (
             <motion.span
               key={line}

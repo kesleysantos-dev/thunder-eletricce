@@ -109,8 +109,11 @@ function Marquee() {
     "Global 500",
     "Patinete P8",
     "Oggi Big Wheel 8.0",
+    "Sudu A13T",
+    "Yoo",
+    "JE-8",
+    "JE-2",
     "Savage",
-    "Triciclo K3",
   ];
   return (
     <div className="relative overflow-hidden border-y border-border bg-surface/60 py-5">
