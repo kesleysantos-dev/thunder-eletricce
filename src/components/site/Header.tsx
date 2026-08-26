@@ -132,13 +132,13 @@ export function Header({ whatsapp }: { whatsapp: string }) {
                     onClick={() => setModelsMenuOpen(false)}
                     className="group block"
                   >
-                    <div className="aspect-[4/3] overflow-hidden rounded-xl bg-surface-2">
+                    <div className="aspect-[3/4] overflow-hidden rounded-xl bg-surface-2">
                       {model && (
                         <img
                           src={model.image}
                           alt={name}
                           loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       )}
                     </div>
