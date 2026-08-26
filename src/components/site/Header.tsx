@@ -13,10 +13,10 @@ const LINKS = [
 // Placeholder categories/models for the "Modelos" menu — swap in the real
 // category names and product lists once they're defined.
 const MODEL_CATEGORIES = [
-  { name: "Categoria 1", models: ["Kasper", "Sudu A5", "Urban GT", "Joy"] },
-  { name: "Categoria 2", models: ["Zenvo", "X13 Sport", "BE-300", "BE-200"] },
+  { name: "Categoria 1", models: ["Kasper", "Sudu A5", "Urban GT", "Global Extreme"] },
+  { name: "Categoria 2", models: ["Zenvo", "X13 Sport", "Patinete SE-90", "Global 500"] },
   { name: "Categoria 3", models: ["Tank", "Savage Pro", "Cargo K1", "Triciclo K3"] },
-  { name: "Categoria 4", models: ["HE-6", "HE-15", "Joy Plus"] },
+  { name: "Categoria 4", models: ["Patinete P8", "Oggi Big Wheel 8.0", "Joy Plus"] },
 ];
 
 export function Header({ whatsapp }: { whatsapp: string }) {

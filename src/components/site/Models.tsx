@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  Cog,
   Disc,
   Gauge,
   Route,
@@ -18,11 +19,11 @@ import kasper from "@/assets/modelos/KASPER.jpeg";
 import suduA5 from "@/assets/modelos/SUDU A5.jpeg";
 import zenvo from "@/assets/modelos/ZENVO.jpeg";
 import tank from "@/assets/modelos/TANK.jpeg";
-import moto5 from "@/assets/moto-5.jpg";
-import moto6 from "@/assets/moto-6.jpg";
-import moto7 from "@/assets/moto-7.jpg";
-import moto8 from "@/assets/moto-8.jpg";
-import moto9 from "@/assets/moto-9.jpg";
+import globalExtreme from "@/assets/modelos/GLOBAL EXTREME.jpeg";
+import patineteSe90 from "@/assets/modelos/PATINETE SE-90.jpeg";
+import global500 from "@/assets/modelos/GLOBAL 500.jpeg";
+import patineteP8 from "@/assets/modelos/PATINETE P8.jpeg";
+import oggiBigWheel from "@/assets/modelos/OGGI BIG WHEEL 8.0 .jpeg";
 import moto10 from "@/assets/moto-10.jpg";
 import moto11 from "@/assets/moto-11.jpg";
 import moto12 from "@/assets/moto-12.jpg";
@@ -69,13 +70,21 @@ function specsV2(opts: {
   loadCapacity: string;
   security: string;
   brake: string;
+  // Most models use this slot for a security feature (trava/alarme). A few
+  // (e.g. the Oggi, an e-bike) use it for something else, like the gearing.
+  securityLabel?: string;
+  securityIcon?: LucideIcon;
 }): Spec[] {
   return [
     { icon: Zap, label: "Motor", value: opts.power },
     { icon: BatteryCharging, label: "Bateria", value: opts.battery },
     { icon: Route, label: "Autonomia", value: opts.autonomy },
     { icon: Weight, label: "Capacidade de carga", value: opts.loadCapacity },
-    { icon: ShieldCheck, label: "Segurança", value: opts.security },
+    {
+      icon: opts.securityIcon ?? ShieldCheck,
+      label: opts.securityLabel ?? "Segurança",
+      value: opts.security,
+    },
     { icon: Disc, label: "Freio", value: opts.brake },
   ];
 }
@@ -130,73 +139,65 @@ export const MODELS: Model[] = [
     }),
   },
   {
-    name: "Joy",
-    tag: "Leveza no trajeto",
-    image: moto5,
-    note: "Compacta e fácil de pilotar — ideal pro trabalho, faculdade e corre do dia.",
-    specs: specsV1({
-      autonomy: "até 70 km",
-      speed: "50 km/h",
-      battery: "Lítio 60V 20Ah",
-      chargeTime: "4h",
-      weight: "65 kg",
-      power: "700 W",
+    name: "Global Extreme",
+    image: globalExtreme,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Chumbo",
+      autonomy: "até 60 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
     }),
   },
   {
-    name: "BE-200",
-    tag: "Torque silencioso",
-    image: moto6,
-    note: "Naked musculosa com arrancada forte, painel digital e postura de big bike.",
-    specs: specsV1({
-      autonomy: "até 110 km",
-      speed: "80 km/h",
-      battery: "Lítio 72V 32Ah",
-      chargeTime: "6h",
-      weight: "95 kg",
-      power: "2.000 W",
+    name: "Patinete SE-90",
+    image: patineteSe90,
+    specs: specsV2({
+      power: "750 W",
+      battery: "Lítio",
+      autonomy: "50 a 60 km",
+      loadCapacity: "120 kg",
+      security: "Sistema NFC",
+      brake: "Freio a disco",
     }),
   },
   {
-    name: "BE-300",
-    tag: "Esportiva de verdade",
-    image: moto7,
-    note: "Carenada, agressiva e a mais rápida da linha. Pra quem quer emoção pura.",
-    specs: specsV1({
-      autonomy: "até 120 km",
-      speed: "100 km/h",
-      battery: "Lítio 72V 40Ah",
-      chargeTime: "7h",
-      weight: "110 kg",
-      power: "3.000 W",
+    name: "Global 500",
+    image: global500,
+    specs: specsV2({
+      power: "500 W",
+      battery: "Chumbo",
+      autonomy: "até 30 km",
+      loadCapacity: "120 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
     }),
   },
   {
-    name: "HE-6",
-    tag: "Estilo retrô",
-    image: moto8,
-    note: "Visual clássico de cafe racer com banco em couro e tecnologia elétrica moderna.",
-    specs: specsV1({
-      autonomy: "até 85 km",
-      speed: "60 km/h",
-      battery: "Lítio 60V 26Ah",
-      chargeTime: "5h",
-      weight: "78 kg",
-      power: "1.000 W",
+    name: "Patinete P8",
+    image: patineteP8,
+    specs: specsV2({
+      power: "350 W",
+      battery: "Lítio",
+      autonomy: "até 30 km",
+      loadCapacity: "120 kg",
+      security: "Aplicativo com ferramentas próprias",
+      brake: "Freio a disco na roda traseira",
     }),
   },
   {
-    name: "HE-15",
-    tag: "Pra qualquer terreno",
-    image: moto9,
-    note: "Suspensão longa e pneus de cravo pra encarar terra, areia e estrada de chão.",
-    specs: specsV1({
-      autonomy: "até 95 km",
-      speed: "70 km/h",
-      battery: "Lítio 72V 30Ah",
-      chargeTime: "6h",
-      weight: "88 kg",
-      power: "1.500 W",
+    name: "Oggi Big Wheel 8.0",
+    image: oggiBigWheel,
+    specs: specsV2({
+      power: "250 W",
+      battery: "Lítio removível Samsung",
+      autonomy: "até 50 km",
+      loadCapacity: "110 kg",
+      security: "7 marchas Shimano",
+      securityLabel: "Marchas",
+      securityIcon: Cog,
+      brake: "Freio a disco",
     }),
   },
   {
@@ -452,8 +453,9 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            15 modelos em linha: Kasper, Sudu A5, Zenvo, Tank, Joy, Savage, BE, HE e triciclos.
-            Todas com bateria de lítio, garantia e assistência aqui em Fortaleza.
+            15 modelos em linha: Kasper, Sudu A5, Zenvo, Tank, Global Extreme, Patinete SE-90,
+            Global 500, Patinete P8, Oggi Big Wheel 8.0 e mais. Todas com garantia e assistência
+            aqui em Fortaleza.
           </p>
         </Reveal>
       </div>

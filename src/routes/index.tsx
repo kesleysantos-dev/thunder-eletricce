@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Motos e scooters elétricas em Fortaleza: Kasper, Sudu A5, Zenvo, Tank, Joy e mais. Bateria de lítio, garantia, assistência técnica e test drive com pronta entrega.",
+          "Motos, scooters e patinetes elétricos em Fortaleza: Kasper, Sudu A5, Zenvo, Tank, Global Extreme e mais. Garantia, assistência técnica e test drive com pronta entrega.",
       },
       { property: "og:title", content: "Thunder Eletric Fortaleza | Motos Elétricas" },
       {
@@ -104,12 +104,12 @@ function Marquee() {
     "Sudu A5",
     "Zenvo",
     "Tank",
-    "Joy",
+    "Global Extreme",
+    "Patinete SE-90",
+    "Global 500",
+    "Patinete P8",
+    "Oggi Big Wheel 8.0",
     "Savage",
-    "BE-200",
-    "BE-300",
-    "HE-6",
-    "HE-15",
     "Triciclo K3",
   ];
   return (
