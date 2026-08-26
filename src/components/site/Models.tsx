@@ -379,20 +379,21 @@ function ModelModal({
   const leftSpecs = model.specs.slice(0, mid);
   const rightSpecs = model.specs.slice(mid);
 
-  const specList = (specs: Spec[]) => (
-    <dl className="grid grid-cols-2 gap-3 md:grid-cols-1" translate="no">
-      {specs.map((spec) => (
-        <div key={spec.label} className="rounded-xl bg-surface-2 px-4 py-3 text-center md:text-left">
-          <div className="flex items-center justify-center gap-2 md:justify-start">
-            <spec.icon className="h-4 w-4 shrink-0 text-brand" />
-            <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              {spec.label}
-            </dt>
-          </div>
-          <dd className="mt-1 text-sm font-semibold leading-tight">{spec.value}</dd>
-        </div>
-      ))}
-    </dl>
+  const specBox = (spec: Spec, align: "left" | "center") => (
+    <div
+      key={spec.label}
+      className={`rounded-xl bg-surface-2 px-3 py-2 sm:px-4 sm:py-3 ${
+        align === "center" ? "text-center" : "text-left"
+      }`}
+    >
+      <div className={`flex items-center gap-1.5 sm:gap-2 ${align === "center" ? "justify-center" : ""}`}>
+        <spec.icon className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4" />
+        <dt className="text-[9px] uppercase tracking-wider text-muted-foreground sm:text-[10px]">
+          {spec.label}
+        </dt>
+      </div>
+      <dd className="mt-0.5 text-xs font-semibold leading-tight sm:mt-1 sm:text-sm">{spec.value}</dd>
+    </div>
   );
 
   return createPortal(
@@ -401,24 +402,26 @@ function ModelModal({
       aria-modal="true"
       aria-label={model.name}
       onClick={onClose}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 p-3 backdrop-blur-md sm:p-4"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl bg-surface hairline"
+        className="relative flex max-h-[95vh] w-full max-w-4xl flex-col overflow-y-auto rounded-3xl bg-surface hairline"
       >
         <button
           onClick={onClose}
           aria-label="Fechar"
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background/70 text-foreground/80 backdrop-blur transition-colors hover:text-brand-hot"
+          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-background/70 text-foreground/80 backdrop-blur transition-colors hover:text-brand-hot sm:right-4 sm:top-4 sm:h-10 sm:w-10"
         >
           <X className="h-5 w-5" />
         </button>
 
-        <div className="grid gap-6 p-6 sm:p-10 md:grid-cols-[1fr_1.1fr_1fr] md:items-center md:gap-8">
-          <div className="order-2 md:order-none">{specList(leftSpecs)}</div>
+        <div className="p-4 pb-0 sm:p-8 md:grid md:grid-cols-[1fr_1.1fr_1fr] md:items-center md:gap-8 md:p-10">
+          <dl className="hidden gap-3 md:grid" translate="no">
+            {leftSpecs.map((spec) => specBox(spec, "left"))}
+          </dl>
 
-          <div className="order-1 flex flex-col items-center text-center md:order-none">
+          <div className="flex flex-col items-center text-center">
             {model.tag && (
               <span className="rounded-full bg-brand/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-brand-hot">
                 {model.tag}
@@ -427,23 +430,33 @@ function ModelModal({
             <img
               src={model.image}
               alt={`Moto elétrica ${model.name} na Thunder Eletric Fortaleza`}
-              className="mt-4 max-h-[42vh] w-auto object-contain"
+              className="mt-3 max-h-[22vh] w-auto object-contain sm:max-h-[32vh] md:mt-4 md:max-h-[42vh]"
             />
-            <h3 className="display mt-4 text-3xl" translate="no">
+            <h3 className="display mt-2 text-2xl sm:mt-3 sm:text-3xl" translate="no">
               {model.name}
             </h3>
-            {model.note && <p className="mt-2 max-w-xs text-sm text-muted-foreground">{model.note}</p>}
+            {model.note && (
+              <p className="mt-1.5 max-w-xs text-xs text-muted-foreground sm:mt-2 sm:text-sm">
+                {model.note}
+              </p>
+            )}
+
+            <dl className="mt-3 grid w-full grid-cols-2 gap-2 sm:mt-4 md:hidden" translate="no">
+              {model.specs.map((spec) => specBox(spec, "center"))}
+            </dl>
           </div>
 
-          <div className="order-3 md:order-none">{specList(rightSpecs)}</div>
+          <dl className="hidden gap-3 md:grid" translate="no">
+            {rightSpecs.map((spec) => specBox(spec, "left"))}
+          </dl>
         </div>
 
-        <div className="border-t border-border p-6 sm:p-8">
+        <div className="mt-4 border-t border-border p-4 sm:mt-0 sm:p-6 md:p-8">
           <a
             href={whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="mx-auto flex w-full max-w-sm items-center justify-center rounded-full bg-gradient-brand py-3.5 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
+            className="mx-auto flex w-full max-w-sm items-center justify-center rounded-full bg-gradient-brand py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:py-3.5"
           >
             Preços e Condições
           </a>
