@@ -78,23 +78,23 @@ const BENEFITS = [
 const FAQ = [
   {
     q: "Precisa de CNH ou emplacamento?",
-    a: "Os modelos com até 50 km/h e potência dentro da regra do CONTRAN dispensam CNH e emplacamento. Nos modelos mais potentes, explicamos direitinho o que é exigido antes da compra.",
+    a: "Nossos modelos se enquadram na Resolução CONTRAN nº 996/2023, não é necessário CNH, registro ou emplacamento. Eles possuem até 1.000 W de potência e velocidade máxima de 32 km/h.",
   },
   {
     q: "Quanto custa carregar?",
-    a: "Uma carga completa fica em torno de R$ 1 a R$ 2 de energia. Rodando todo dia, a conta costuma ficar abaixo de R$ 30 no mês — bem menos que um tanque de gasolina.",
+    a: "Uma carga completa custa, em média, R$ 1 a R$ 2, dependendo do modelo e da tarifa de energia. Muito menos que abastecer um veículo a gasolina.",
   },
   {
     q: "Qual a autonomia real?",
-    a: "Depende do modelo, do peso e do terreno: a média fica entre 60 e 100 km por carga. No test drive mostramos o consumo real da moto que você escolher.",
+    a: "Depende do modelo, peso, terreno e forma de condução. Temos modelos que oferecem autonomia de até 100 km por carga.",
   },
   {
     q: "Vocês parcelam?",
-    a: "Sim. Trabalhamos com cartão, pix, entrada + parcelas e opções de financiamento. Chame no WhatsApp que a gente simula em minutos.",
+    a: "Sim! Trabalhamos com cartão em até 21x, Pix e opções de entrada + parcelas. Fale com nossa equipe que fazemos sua simulação em minutos.",
   },
   {
     q: "E a manutenção?",
-    a: "Não tem óleo, corrente nem vela. A revisão é simples e barata, e fazemos tudo na nossa oficina com peças em estoque.",
+    a: "É simples e econômica. Não utiliza óleo, vela ou corrente de transmissão. Na Thunder, você conta com oficina própria e peças de reposição.",
   },
 ];
 
@@ -226,7 +226,9 @@ function Index() {
                     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand/12 text-brand transition-transform duration-500 group-hover:-translate-y-1">
                       <b.icon className="h-5 w-5" />
                     </div>
-                    <h3 className="text-lg font-semibold">{b.title}</h3>
+                    <h3 className="text-lg font-semibold" translate="no">
+                      {b.title}
+                    </h3>
                     <p className="mt-2 text-sm text-muted-foreground">{b.text}</p>
                   </div>
                 </Reveal>
