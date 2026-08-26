@@ -138,7 +138,7 @@ export function Header({ whatsapp }: { whatsapp: string }) {
                           src={model.image}
                           alt={name}
                           loading="lazy"
-                          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                          className="h-full w-full scale-[1.15] object-contain transition-transform duration-500 group-hover:scale-[1.22]"
                         />
                       )}
                     </div>
