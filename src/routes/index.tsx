@@ -2,13 +2,13 @@ import { useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import {
-  BatteryCharging,
+  LifeBuoy,
   MapPin,
   MessageCircle,
   Minus,
   Phone,
   Plus,
-  ShieldCheck,
+  Route as RouteIcon,
   Truck,
   Wrench,
 } from "lucide-react";
@@ -54,24 +54,24 @@ export const Route = createFileRoute("/")({
 
 const BENEFITS = [
   {
-    icon: BatteryCharging,
-    title: "Bateria de lítio",
-    text: "Mais leve, carrega mais rápido e dura até 4x mais ciclos que a de chumbo.",
+    icon: RouteIcon,
+    title: "Test-Drive de Verdade",
+    text: "Suba, acelere e sinta a scooter na prática. Na Thunder, você pode fazer um test-drive real e descobrir qual modelo combina com você antes de comprar.",
   },
   {
     icon: Wrench,
-    title: "Assistência própria",
-    text: "Oficina, peças originais e técnicos treinados aqui em Fortaleza — sem depender de fábrica.",
+    title: "Assistência Própria",
+    text: "Nossa oficina fica em Fortaleza, com técnicos treinados e peças originais para cuidar da sua scooter antes e depois da compra.",
   },
   {
-    icon: ShieldCheck,
-    title: "Garantia real",
-    text: "Garantia de fábrica na moto e na bateria, com suporte direto com a nossa equipe.",
+    icon: LifeBuoy,
+    title: "Pós Venda de Verdade",
+    text: "Garantia de fábrica, suporte especializado e uma equipe pronta para ajudar sempre que você precisar.",
   },
   {
     icon: Truck,
-    title: "Entrega e pronta entrega",
-    text: "Levamos até você em toda a Grande Fortaleza. Saiu da loja, saiu rodando.",
+    title: "Pronta para Você",
+    text: "Temos scooters à pronta entrega para você sair da loja com a sua nova mobilidade. Também fazemos entregas em Fortaleza, Região Metropolitana e enviamos para diversas cidades do Ceará e Rio Grande do Norte.",
   },
 ];
 
