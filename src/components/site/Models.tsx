@@ -315,7 +315,9 @@ function ModelCard({ model, whatsapp }: { model: Model; whatsapp: string }) {
       </div>
 
       <div className="relative -mt-7 flex flex-1 flex-col px-4 pb-5">
-        <h3 className="display text-2xl">{model.name}</h3>
+        <h3 className="display text-2xl" translate="no">
+          {model.name}
+        </h3>
         {model.note && (
           <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{model.note}</p>
         )}

@@ -119,6 +119,7 @@ function Marquee() {
           <span
             key={`${item}-${i}`}
             className="display flex items-center gap-10 text-2xl text-foreground/35"
+            translate="no"
           >
             {item}
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -157,7 +158,8 @@ function ParallaxBanner() {
           </h2>
           <p className="mt-5 text-foreground/75">
             Venha na loja e pilote antes de decidir. Em 5 minutos você entende por que mais
-            de 10 mil pessoas acompanham a Thunder aqui em Fortaleza.
+            de 10 mil pessoas acompanham a <span translate="no">Thunder</span> aqui em
+            Fortaleza.
           </p>
           <a
             href={WHATSAPP}
@@ -196,7 +198,9 @@ function Index() {
         <section id="vantagens" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <Reveal>
-              <p className="text-xs uppercase tracking-[0.3em] text-brand">Por que a Thunder</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-brand">
+                Por que a <span translate="no">Thunder</span>
+              </p>
               <h2 className="display mt-3 text-[clamp(2.2rem,6vw,4rem)]">
                 Loja de verdade,
                 <br />
@@ -266,7 +270,9 @@ function Index() {
             <Reveal delay={0.1}>
               <div className="relative overflow-hidden rounded-2xl bg-surface p-8 hairline">
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-brand" />
-                <h3 className="text-sm uppercase tracking-[0.2em] text-brand">Thunder elétrica</h3>
+                <h3 className="text-sm uppercase tracking-[0.2em] text-brand">
+                  <span translate="no">Thunder</span> elétrica
+                </h3>
                 <p className="display mt-3 text-4xl text-gradient-brand">~R$ 28/mês</p>
                 <ul className="mt-6 space-y-3 text-sm text-foreground/80">
                   {[
@@ -297,7 +303,12 @@ function Index() {
               {[
                 {
                   name: "Rafael M.",
-                  text: "Comprei a Kasper pra trabalhar de entrega. Economizo mais de R$ 300 por mês e nunca mais parei no posto.",
+                  text: (
+                    <>
+                      Comprei a <span translate="no">Kasper</span> pra trabalhar de entrega.
+                      Economizo mais de R$ 300 por mês e nunca mais parei no posto.
+                    </>
+                  ),
                 },
                 {
                   name: "Juliana S.",
@@ -305,7 +316,12 @@ function Index() {
                 },
                 {
                   name: "Carlos A.",
-                  text: "A Zenvo impressiona. Silenciosa, rápida no arranque e o pessoal da loja explicou tudo sobre a bateria de lítio.",
+                  text: (
+                    <>
+                      A <span translate="no">Zenvo</span> impressiona. Silenciosa, rápida no
+                      arranque e o pessoal da loja explicou tudo sobre a bateria de lítio.
+                    </>
+                  ),
                 },
               ].map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.08}>
@@ -380,8 +396,8 @@ function Index() {
           <div>
             <img src={logo} alt="Thunder Eletric Fortaleza" className="h-12 w-auto" />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Thunder Eletric Fortaleza — modelos 100% elétricos, peças, garantia e assistência
-              técnica.
+              <span translate="no">Thunder Eletric</span> Fortaleza — modelos 100% elétricos,
+              peças, garantia e assistência técnica.
             </p>
           </div>
           <div className="space-y-3 text-sm text-muted-foreground">
@@ -419,7 +435,8 @@ function Index() {
           </div>
         </div>
         <div className="border-t border-border px-5 py-5 text-center text-xs text-muted-foreground sm:px-8">
-          © {new Date().getFullYear()} Thunder Eletric Fortaleza. Todos os direitos reservados.
+          © {new Date().getFullYear()} <span translate="no">Thunder Eletric</span> Fortaleza.
+          Todos os direitos reservados.
         </div>
       </footer>
 

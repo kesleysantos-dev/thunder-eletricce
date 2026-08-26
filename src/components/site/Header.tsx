@@ -53,7 +53,7 @@ export function Header({ whatsapp }: { whatsapp: string }) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
         <a href="#top" className="flex items-center gap-3">
           <img src={logo} alt="Thunder Eletric" className="h-9 w-auto" />
-          <span className="display hidden text-lg leading-none sm:block">
+          <span className="display hidden text-lg leading-none sm:block" translate="no">
             Thunder <span className="text-brand">Eletric</span>
           </span>
         </a>
@@ -142,7 +142,10 @@ export function Header({ whatsapp }: { whatsapp: string }) {
                         />
                       )}
                     </div>
-                    <p className="mt-2.5 text-sm font-medium text-foreground/85 transition-colors group-hover:text-brand-hot">
+                    <p
+                      className="mt-2.5 text-sm font-medium text-foreground/85 transition-colors group-hover:text-brand-hot"
+                      translate="no"
+                    >
                       {name}
                     </p>
                   </a>
