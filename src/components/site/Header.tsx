@@ -10,13 +10,14 @@ const LINKS = [
   { href: "#duvidas", label: "Dúvidas" },
 ];
 
-// Placeholder categories/models for the "Modelos" menu — swap in the real
-// category names and product lists once they're defined.
 const MODEL_CATEGORIES = [
-  { name: "Categoria 1", models: ["Kasper", "Sudu A5", "Yoo", "Global Extreme"] },
-  { name: "Categoria 2", models: ["Zenvo", "JE-8", "Patinete SE-90", "Global 500"] },
-  { name: "Categoria 3", models: ["Tank", "Savage Pro", "Cargo K1", "Sudu A13T"] },
-  { name: "Categoria 4", models: ["Patinete P8", "Oggi Big Wheel 8.0", "JE-2"] },
+  {
+    name: "Scooter",
+    models: ["Kasper", "Sudu A5", "Zenvo", "Tank", "Global Extreme", "Global 500", "Yoo", "JE-8", "JE-2"],
+  },
+  { name: "Triciclo", models: ["Sudu A13T"] },
+  { name: "Bicicleta", models: ["Oggi Big Wheel 8.0"] },
+  { name: "Patinete", models: ["Patinete SE-90", "Patinete P8"] },
 ];
 
 export function Header({ whatsapp }: { whatsapp: string }) {
@@ -122,7 +123,7 @@ export function Header({ whatsapp }: { whatsapp: string }) {
               ))}
             </div>
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="thin-scrollbar grid max-h-[60vh] grid-cols-4 gap-6 overflow-y-auto pr-1">
               {MODEL_CATEGORIES[activeCategory].models.map((name) => {
                 const model = MODELS.find((m) => m.name === name);
                 return (

@@ -209,8 +209,9 @@ function Index() {
                 <span className="text-gradient-brand">não é só entrega.</span>
               </h2>
               <p className="mt-5 text-muted-foreground">
-                Muita gente vende moto elétrica pela internet e some depois da venda. Aqui você tem
-                endereço, oficina, peça em estoque e gente pra atender no dia seguinte.
+                Muita gente vende moto elétrica pela internet e some depois da venda. Na Thunder,
+                você tem endereço, oficina própria, peças em estoque e gente de verdade para atender
+                você.
               </p>
               <div className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-8">
                 <Counter value="10" suffix=" mil" label="Seguidores" />
@@ -306,38 +307,43 @@ function Index() {
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  name: "Rafael M.",
+                  name: "Isac Aires",
                   text: (
                     <>
-                      Comprei a <span translate="no">Kasper</span> pra trabalhar de entrega.
-                      Economizo mais de R$ 300 por mês e nunca mais parei no posto.
+                      Equipe com excelente atendimento e uma grande variedade de scooter's
+                      elétricas. A loja tem oficina.
                     </>
                   ),
+                  link: "https://maps.app.goo.gl/MzSyx3N6gYM2BuGS9",
                 },
                 {
-                  name: "Juliana S.",
-                  text: "Atendimento sem enrolação. Fiz o test drive, levei no mesmo dia e a assistência resolveu tudo rapidinho depois.",
+                  name: "Jobson surf na veia",
+                  text: "Pessoal super atencioso, local fácil localização Materiais de ótima qualidade,RECOMENDO!",
+                  link: "https://maps.app.goo.gl/EHu5KaSdQG1TL5Ky5",
                 },
                 {
-                  name: "Carlos A.",
-                  text: (
-                    <>
-                      A <span translate="no">Zenvo</span> impressiona. Silenciosa, rápida no
-                      arranque e o pessoal da loja explicou tudo sobre a bateria de lítio.
-                    </>
-                  ),
+                  name: "Eduardo Passos Alencar",
+                  text: "Atendimento excepcional!",
+                  link: "https://maps.app.goo.gl/k8UJ91C4WbQH9Zco9",
                 },
               ].map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.08}>
-                  <figure className="h-full rounded-2xl bg-surface p-7 hairline">
-                    <div className="mb-4 text-brand">★★★★★</div>
-                    <blockquote className="text-sm leading-relaxed text-foreground/80">
-                      “{t.text}”
-                    </blockquote>
-                    <figcaption className="mt-5 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                      {t.name}
-                    </figcaption>
-                  </figure>
+                  <a
+                    href={t.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block h-full"
+                  >
+                    <figure className="flex h-full flex-col rounded-2xl bg-surface p-7 hairline transition-colors duration-300 hover:border-brand/50">
+                      <div className="mb-4 text-brand">★★★★★</div>
+                      <blockquote className="text-sm leading-relaxed text-foreground/80">
+                        “{t.text}”
+                      </blockquote>
+                      <figcaption className="mt-auto pt-5 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        {t.name}
+                      </figcaption>
+                    </figure>
+                  </a>
                 </Reveal>
               ))}
             </div>

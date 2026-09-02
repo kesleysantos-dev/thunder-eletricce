@@ -5,10 +5,8 @@ import {
   BatteryCharging,
   ChevronLeft,
   ChevronRight,
-  Clock,
   Cog,
   Disc,
-  Gauge,
   Route,
   ShieldCheck,
   Weight,
@@ -30,8 +28,6 @@ import suduA13t from "@/assets/modelos/SUDU A13T.jpeg";
 import yoo from "@/assets/modelos/YOO.jpeg";
 import je8 from "@/assets/modelos/JE-8.jpeg";
 import je2 from "@/assets/modelos/JE-2.jpeg";
-import moto14 from "@/assets/moto-14.jpg";
-import moto15 from "@/assets/moto-15.jpg";
 import { Reveal } from "./Reveal";
 
 export type Spec = { icon: LucideIcon; label: string; value: string };
@@ -43,27 +39,6 @@ export type Model = {
   note?: string;
   specs: Spec[];
 };
-
-// Standard spec set used by most models in the line (autonomy/speed/battery/
-// charge time/weight/power). The 4 newest models (Kasper, Sudu A5, Zenvo,
-// Tank) use a different spec set provided by the store — see specsV2 below.
-function specsV1(opts: {
-  autonomy: string;
-  speed: string;
-  battery: string;
-  chargeTime: string;
-  weight: string;
-  power: string;
-}): Spec[] {
-  return [
-    { icon: Route, label: "Autonomia", value: opts.autonomy },
-    { icon: Gauge, label: "Velocidade", value: opts.speed },
-    { icon: BatteryCharging, label: "Bateria", value: opts.battery },
-    { icon: Clock, label: "Recarga", value: opts.chargeTime },
-    { icon: Weight, label: "Peso", value: opts.weight },
-    { icon: Zap, label: "Potência", value: opts.power },
-  ];
-}
 
 function specsV2(opts: {
   power: string;
@@ -248,34 +223,6 @@ export const MODELS: Model[] = [
       loadCapacity: "160 kg",
       security: "Trava e alarme",
       brake: "Freio dianteiro a disco",
-    }),
-  },
-  {
-    name: "Savage Pro",
-    tag: "Trabalho pesado",
-    image: moto14,
-    note: "Supermoto parruda, pronta pra ladeira, garupa, peso e uso intenso diário.",
-    specs: specsV1({
-      autonomy: "até 105 km",
-      speed: "75 km/h",
-      battery: "Lítio 72V 32Ah",
-      chargeTime: "6h",
-      weight: "100 kg",
-      power: "1.800 W",
-    }),
-  },
-  {
-    name: "Cargo K1",
-    tag: "Parceira do entregador",
-    image: moto15,
-    note: "Baú incluso e autonomia pra jornada completa de entregas sem recarregar.",
-    specs: specsV1({
-      autonomy: "até 100 km",
-      speed: "55 km/h",
-      battery: "Lítio 60V 30Ah",
-      chargeTime: "5h",
-      weight: "82 kg",
-      power: "1.200 W",
     }),
   },
 ];
@@ -593,7 +540,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            15 modelos em linha: Kasper, Sudu A5, Zenvo, Tank, Global Extreme, Patinete SE-90,
+            13 modelos em linha: Kasper, Sudu A5, Zenvo, Tank, Global Extreme, Patinete SE-90,
             Global 500, Patinete P8, Oggi Big Wheel 8.0 e mais. Todas com garantia e assistência
             aqui em Fortaleza.
           </p>
