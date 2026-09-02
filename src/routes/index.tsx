@@ -28,7 +28,7 @@ import moto3 from "@/assets/moto-3.jpg";
 import logo from "@/assets/logo.png";
 
 const WHATSAPP =
-  "https://wa.me/5585999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas.";
+  "https://wa.me/5585997164224?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
