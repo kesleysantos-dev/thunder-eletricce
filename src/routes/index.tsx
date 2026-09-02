@@ -328,12 +328,7 @@ function Index() {
                 },
               ].map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.08}>
-                  <a
-                    href={t.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block h-full"
-                  >
+                  <a href={t.link} target="_blank" rel="noreferrer" className="block h-full">
                     <figure className="flex h-full flex-col rounded-2xl bg-surface p-7 hairline transition-colors duration-300 hover:border-brand/50">
                       <div className="mb-4 text-brand">★★★★★</div>
                       <blockquote className="text-sm leading-relaxed text-foreground/80">
@@ -448,8 +443,13 @@ function Index() {
           </div>
         </div>
         <div className="border-t border-border px-5 py-5 text-center text-xs text-muted-foreground sm:px-8">
-          © {new Date().getFullYear()} <span translate="no">Thunder Eletric</span> Fortaleza. Todos
-          os direitos reservados.
+          <p>
+            © {new Date().getFullYear()} <span translate="no">Thunder Eletric</span> Fortaleza.
+            Todos os direitos reservados.
+          </p>
+          <p className="mt-1" translate="no">
+            Desenvolvido Por Kesley Santos
+          </p>
         </div>
       </footer>
 
