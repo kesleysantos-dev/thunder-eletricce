@@ -410,10 +410,21 @@ function Index() {
           </div>
           <div className="space-y-3 text-sm text-muted-foreground">
             <p className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-brand" /> Fortaleza — CE
+              <MapPin className="h-4 w-4 shrink-0 text-brand" />
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Rua+Isac+Meyer%2C+292+A+-+Aldeota%2C+Fortaleza+-+CE%2C+60160-200"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-brand-hot"
+              >
+                Rua Isac Meyer, 292 A - Aldeota, Fortaleza - CE, 60160-200
+              </a>
             </p>
             <p className="flex items-center gap-2">
-              <Phone className="h-4 w-4 text-brand" /> Atendimento no WhatsApp
+              <Phone className="h-4 w-4 text-brand" />
+              <a href={WHATSAPP} target="_blank" rel="noreferrer" className="hover:text-brand-hot">
+                WhatsApp
+              </a>
             </p>
             <p className="flex items-center gap-2">
               <Truck className="h-4 w-4 text-brand" /> Entregas em toda a Grande Fortaleza

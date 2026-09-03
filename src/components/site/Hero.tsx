@@ -85,10 +85,10 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
         </motion.span>
 
         <h1 className="display max-w-3xl text-[clamp(2.9rem,9vw,6.5rem)]" translate="no">
-          {["A cidade", "é sua.", "Sem gasolina."].map((line, i) => (
+          {["A cidade", "É sua.", "Sem gasolina."].map((line, i) => (
             <motion.span
               key={line}
-              className="block overflow-hidden"
+              className="block overflow-hidden pt-[0.15em]"
               initial={{ opacity: 0, y: "60%" }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.12, duration: 0.9, ease: [0.19, 1, 0.22, 1] }}
