@@ -447,13 +447,30 @@ export function Models({ whatsapp }: { whatsapp: string }) {
   const getCards = () =>
     Array.from(trackRef.current?.querySelectorAll<HTMLElement>("[data-card]") ?? []);
 
+  // Below lg only one card is visible at a time, so we center it in the
+  // viewport via scroll-padding (kept at 0 for the multi-card desktop rows).
+  const getCenterPad = (el: HTMLDivElement, card: HTMLElement) => {
+    if (window.innerWidth >= 1024) return 0;
+    return Math.max(0, (el.clientWidth - card.offsetWidth) / 2);
+  };
+
+  const syncCenterPadding = () => {
+    const el = trackRef.current;
+    const card = el?.querySelector<HTMLElement>("[data-card]");
+    if (!el || !card) return;
+    const pad = `${getCenterPad(el, card)}px`;
+    el.style.scrollPaddingLeft = pad;
+    el.style.scrollPaddingRight = pad;
+  };
+
   const update = () => {
     const el = trackRef.current;
     const cards = getCards();
     if (!el || cards.length < MODELS.length * 2) return;
     const pitch = (cards[1]?.offsetLeft ?? 0) - cards[0].offsetLeft;
     if (!pitch) return;
-    const raw = Math.round((el.scrollLeft - cards[0].offsetLeft) / pitch);
+    const pad = getCenterPad(el, cards[0]);
+    const raw = Math.round((el.scrollLeft + pad - cards[0].offsetLeft) / pitch);
     setActiveIndex(((raw % MODELS.length) + MODELS.length) % MODELS.length);
   };
 
@@ -462,7 +479,8 @@ export function Models({ whatsapp }: { whatsapp: string }) {
     const cards = getCards();
     if (!el || cards.length < MODELS.length * 3) return;
     const groupWidth = cards[MODELS.length].offsetLeft - cards[0].offsetLeft;
-    const realStart = cards[MODELS.length].offsetLeft;
+    const pad = getCenterPad(el, cards[0]);
+    const realStart = cards[MODELS.length].offsetLeft - pad;
     if (!groupWidth) return;
     if (el.scrollLeft < realStart - groupWidth / 2) {
       el.scrollLeft += groupWidth;
@@ -478,10 +496,15 @@ export function Models({ whatsapp }: { whatsapp: string }) {
     const cards = getCards();
     const firstReal = cards[MODELS.length];
     if (!el || !firstReal) return;
-    el.scrollLeft = firstReal.offsetLeft;
+    syncCenterPadding();
+    el.scrollLeft = firstReal.offsetLeft - getCenterPad(el, firstReal);
     update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    const onResize = () => {
+      syncCenterPadding();
+      update();
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
