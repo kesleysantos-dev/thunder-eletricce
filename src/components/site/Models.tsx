@@ -38,6 +38,9 @@ export type Model = {
   image: string;
   note?: string;
   specs: Spec[];
+  // Temporarily hidden from the site (e.g. expired stock) without deleting
+  // its data — flip back to false/remove to bring it back.
+  hidden?: boolean;
 };
 
 function specsV2(opts: {
@@ -70,6 +73,7 @@ export const MODELS: Model[] = [
   {
     name: "Kasper",
     image: kasper,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -94,6 +98,7 @@ export const MODELS: Model[] = [
   {
     name: "Zenvo",
     image: zenvo,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -180,6 +185,7 @@ export const MODELS: Model[] = [
   {
     name: "Sudu A13T",
     image: suduA13t,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -414,8 +420,12 @@ function ModelModal({
   );
 }
 
+// Models flagged `hidden` (e.g. temporarily out of stock) stay in MODELS so
+// their data isn't lost, but never show up in the carousel or mega menu.
+const VISIBLE_MODELS = MODELS.filter((m) => !m.hidden);
+
 const LOOPED_MODELS = [0, 1, 2].flatMap((group) =>
-  MODELS.map((model, i) => ({ ...model, _key: `${group}-${i}` })),
+  VISIBLE_MODELS.map((model, i) => ({ ...model, _key: `${group}-${i}` })),
 );
 
 export function Models({ whatsapp }: { whatsapp: string }) {
@@ -432,12 +442,12 @@ export function Models({ whatsapp }: { whatsapp: string }) {
   useEffect(() => {
     const onOpenModel = (e: Event) => {
       const name = (e as CustomEvent<string>).detail;
-      const index = MODELS.findIndex((m) => m.name === name);
+      const index = VISIBLE_MODELS.findIndex((m) => m.name === name);
       if (index === -1) return;
       const cards = getCards();
-      const card = cards[MODELS.length + index];
+      const card = cards[VISIBLE_MODELS.length + index];
       card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-      setOpenModel(MODELS[index]);
+      setOpenModel(VISIBLE_MODELS[index]);
     };
     window.addEventListener("thunder:open-model", onOpenModel);
     return () => window.removeEventListener("thunder:open-model", onOpenModel);
@@ -466,21 +476,21 @@ export function Models({ whatsapp }: { whatsapp: string }) {
   const update = () => {
     const el = trackRef.current;
     const cards = getCards();
-    if (!el || cards.length < MODELS.length * 2) return;
+    if (!el || cards.length < VISIBLE_MODELS.length * 2) return;
     const pitch = (cards[1]?.offsetLeft ?? 0) - cards[0].offsetLeft;
     if (!pitch) return;
     const pad = getCenterPad(el, cards[0]);
     const raw = Math.round((el.scrollLeft + pad - cards[0].offsetLeft) / pitch);
-    setActiveIndex(((raw % MODELS.length) + MODELS.length) % MODELS.length);
+    setActiveIndex(((raw % VISIBLE_MODELS.length) + VISIBLE_MODELS.length) % VISIBLE_MODELS.length);
   };
 
   const correctLoop = () => {
     const el = trackRef.current;
     const cards = getCards();
-    if (!el || cards.length < MODELS.length * 3) return;
-    const groupWidth = cards[MODELS.length].offsetLeft - cards[0].offsetLeft;
+    if (!el || cards.length < VISIBLE_MODELS.length * 3) return;
+    const groupWidth = cards[VISIBLE_MODELS.length].offsetLeft - cards[0].offsetLeft;
     const pad = getCenterPad(el, cards[0]);
-    const realStart = cards[MODELS.length].offsetLeft - pad;
+    const realStart = cards[VISIBLE_MODELS.length].offsetLeft - pad;
     if (!groupWidth) return;
     if (el.scrollLeft < realStart - groupWidth / 2) {
       el.scrollLeft += groupWidth;
@@ -494,7 +504,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
   useEffect(() => {
     const el = trackRef.current;
     const cards = getCards();
-    const firstReal = cards[MODELS.length];
+    const firstReal = cards[VISIBLE_MODELS.length];
     if (!el || !firstReal) return;
     syncCenterPadding();
     el.scrollLeft = firstReal.offsetLeft - getCenterPad(el, firstReal);
@@ -563,9 +573,9 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            13 modelos em linha: Kasper, Sudu A5, Zenvo, Tank, Global Extreme, Patinete SE-90,
-            Global 500, Patinete P8, Oggi Big Wheel 8.0 e mais. Todas com garantia e assistência
-            aqui em Fortaleza.
+            10 modelos em linha: Sudu A5, Tank, Global Extreme, Patinete SE-90, Global 500,
+            Patinete P8, Oggi Big Wheel 8.0 e mais. Todas com garantia e assistência aqui em
+            Fortaleza.
           </p>
         </Reveal>
       </div>
@@ -643,13 +653,13 @@ export function Models({ whatsapp }: { whatsapp: string }) {
         <div className="h-px flex-1 bg-border">
           <div
             className="h-px bg-gradient-brand transition-[width] duration-200"
-            style={{ width: `${Math.max(6, (activeIndex / (MODELS.length - 1)) * 100)}%` }}
+            style={{ width: `${Math.max(6, (activeIndex / (VISIBLE_MODELS.length - 1)) * 100)}%` }}
           />
         </div>
         <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
           {String(activeIndex + 1).padStart(2, "0")}
           {" / "}
-          {MODELS.length}
+          {VISIBLE_MODELS.length}
         </span>
       </div>
 

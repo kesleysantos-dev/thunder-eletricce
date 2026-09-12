@@ -10,7 +10,7 @@ const LINKS = [
   { href: "#duvidas", label: "Dúvidas" },
 ];
 
-const MODEL_CATEGORIES = [
+const MODEL_CATEGORIES_RAW = [
   {
     name: "Scooter",
     models: ["Kasper", "Sudu A5", "Zenvo", "Tank", "Global Extreme", "Global 500", "Yoo", "JE-8", "JE-2"],
@@ -19,6 +19,14 @@ const MODEL_CATEGORIES = [
   { name: "Bicicleta", models: ["Oggi Big Wheel 8.0"] },
   { name: "Patinete", models: ["Patinete SE-90", "Patinete P8"] },
 ];
+
+// Models flagged `hidden` in MODELS (e.g. temporarily out of stock) are
+// dropped from the mega menu; a category left with none is hidden too.
+const HIDDEN_MODEL_NAMES = new Set(MODELS.filter((m) => m.hidden).map((m) => m.name));
+const MODEL_CATEGORIES = MODEL_CATEGORIES_RAW.map((cat) => ({
+  ...cat,
+  models: cat.models.filter((name) => !HIDDEN_MODEL_NAMES.has(name)),
+})).filter((cat) => cat.models.length > 0);
 
 export function Header({ whatsapp }: { whatsapp: string }) {
   const [scrolled, setScrolled] = useState(false);
