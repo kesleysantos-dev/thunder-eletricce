@@ -13,7 +13,7 @@ const LINKS = [
 const MODEL_CATEGORIES_RAW = [
   {
     name: "Scooter",
-    models: ["Kasper", "Sudu A5", "Zenvo", "Tank", "Global Extreme", "Global 500", "Yoo", "JE-8", "JE-2"],
+    models: ["Kasper", "Sudu A5", "Zenvo", "Tank", "Global Extreme", "Global 500", "Yoo", "JE-8", "JE-2", "Ecoviva HE-15", "Veloster Savage", "Angie AG28", "Veloster Sion"],
   },
   { name: "Triciclo", models: ["Sudu A13T"] },
   { name: "Bicicleta", models: ["Oggi Big Wheel 8.0"] },

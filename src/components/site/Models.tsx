@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import {
   BatteryCharging,
+  Bluetooth,
   ChevronLeft,
   ChevronRight,
   Cog,
@@ -28,6 +29,10 @@ import suduA13t from "@/assets/modelos/SUDU A13T.jpeg";
 import yoo from "@/assets/modelos/YOO.jpeg";
 import je8 from "@/assets/modelos/JE-8.jpeg";
 import je2 from "@/assets/modelos/JE-2.jpeg";
+import ecovivaHe15 from "@/assets/modelos/Ecoviva HE-15.jpeg";
+import velosterSavage from "@/assets/modelos/Veloster Savage.jpeg";
+import angieAg28 from "@/assets/modelos/Angie AG28.jpeg";
+import velosterSion from "@/assets/modelos/Veloster Sion.jpeg";
 import { Reveal } from "./Reveal";
 
 export type Spec = { icon: LucideIcon; label: string; value: string };
@@ -54,6 +59,10 @@ function specsV2(opts: {
   // (e.g. the Oggi, an e-bike) use it for something else, like the gearing.
   securityLabel?: string;
   securityIcon?: LucideIcon;
+  // The last slot is the brake by default; some models list a different
+  // highlight there (e.g. Bluetooth sound).
+  brakeLabel?: string;
+  brakeIcon?: LucideIcon;
 }): Spec[] {
   return [
     { icon: Zap, label: "Motor", value: opts.power },
@@ -65,7 +74,7 @@ function specsV2(opts: {
       label: opts.securityLabel ?? "Segurança",
       value: opts.security,
     },
-    { icon: Disc, label: "Freio", value: opts.brake },
+    { icon: opts.brakeIcon ?? Disc, label: opts.brakeLabel ?? "Freio", value: opts.brake },
   ];
 }
 
@@ -229,6 +238,60 @@ export const MODELS: Model[] = [
       loadCapacity: "160 kg",
       security: "Trava e alarme",
       brake: "Freio dianteiro a disco",
+    }),
+  },
+  {
+    name: "Ecoviva HE-15",
+    image: ecovivaHe15,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Bluetooth",
+      brakeLabel: "Som",
+      brakeIcon: Bluetooth,
+    }),
+  },
+  {
+    name: "Veloster Savage",
+    image: velosterSavage,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Disco hidráulico CBS",
+    }),
+  },
+  {
+    name: "Angie AG28",
+    image: angieAg28,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 100 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Bluetooth",
+      brakeLabel: "Som",
+      brakeIcon: Bluetooth,
+    }),
+  },
+  {
+    name: "Veloster Sion",
+    image: velosterSion,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Bluetooth",
+      brakeLabel: "Som",
+      brakeIcon: Bluetooth,
     }),
   },
 ];
@@ -573,9 +636,9 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            10 modelos em linha: Sudu A5, Tank, Global Extreme, Patinete SE-90, Global 500,
-            Patinete P8, Oggi Big Wheel 8.0 e mais. Todas com garantia e assistência aqui em
-            Fortaleza.
+            {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Tank, Global Extreme, Veloster
+            Savage, Angie AG28, Global 500, Oggi Big Wheel 8.0 e mais. Todas com garantia e
+            assistência aqui em Fortaleza.
           </p>
         </Reveal>
       </div>
