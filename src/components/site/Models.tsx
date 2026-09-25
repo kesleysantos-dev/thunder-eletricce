@@ -120,6 +120,7 @@ export const MODELS: Model[] = [
   {
     name: "Tank",
     image: tank,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -144,6 +145,7 @@ export const MODELS: Model[] = [
   {
     name: "Patinete SE-90",
     image: patineteSe90,
+    hidden: true,
     specs: specsV2({
       power: "750 W",
       battery: "Lítio",
@@ -636,7 +638,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Tank, Global Extreme, Veloster
+            {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Global Extreme, Veloster
             Savage, Angie AG28, Global 500, Oggi Big Wheel 8.0 e mais. Todas com garantia e
             assistência aqui em Fortaleza.
           </p>

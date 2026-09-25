@@ -101,9 +101,7 @@ const FAQ = [
 function Marquee() {
   const items = [
     "Sudu A5",
-    "Tank",
     "Global Extreme",
-    "Patinete SE-90",
     "Global 500",
     "Patinete P8",
     "Oggi Big Wheel 8.0",
@@ -307,19 +305,19 @@ function Index() {
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
                 {
+                  name: "Edivan Carneiro",
+                  text: "Atendimento excelente,eles têm uma equipe de profissionais que são bem receptivos ,e sobre o produto que adquiri até agora tem demostrado aquilo que promete .E sem sombra de dúvidas eu indico.",
+                  link: "https://maps.app.goo.gl/abZz8d4Eh4aLAmqo6",
+                },
+                {
                   name: "Ezio Peixoto",
                   text: "Comprei uma scooter tank pra minha esposa mais quem usa mais sou eu kkkk muito massa, e sobre o atendimento dos caras excelente. Atenciosos tudo direitinho massaaaa.",
-                  link: "https://maps.app.goo.gl/6LMcLKFPD3wTH3Vq8",
+                  link: "https://maps.app.goo.gl/CrvWBAurpdwfAvn39",
                 },
                 {
                   name: "Cibelle Silva",
                   text: "Ótimo atendimento e pós venda tbm",
-                  link: "https://maps.app.goo.gl/cBJNXYUfkwr7vRoQA",
-                },
-                {
-                  name: "Clara Bindá",
-                  text: "Tem uma boa variedade de modelos e a equipe te dá muita segurança de compra, principalmente no pós venda. O atendimento foi (e continua sendo) excelente, você compra até mais feliz 😅",
-                  link: "https://maps.app.goo.gl/G1Z8gBhnhNBTs11h6",
+                  link: "https://maps.app.goo.gl/arRnqQfHvmLPpwVV8",
                 },
               ].map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.08}>
