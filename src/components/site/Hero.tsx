@@ -1,30 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ChevronDown, Zap } from "lucide-react";
 
 import heroVideo from "@/assets/hero.mp4";
-import heroVideo2 from "@/assets/hero-2.mp4";
-
-const CLIPS = [heroVideo, heroVideo2];
-const SCENE_MS = 8200;
 
 export function Hero({ whatsapp }: { whatsapp: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-38%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const scrimOpacity = useTransform(scrollYProgress, [0, 1], [0.32, 0.9]);
-
-  useEffect(() => {
-    const id = setInterval(() => setActive((i) => (i + 1) % CLIPS.length), SCENE_MS);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     const play = () => {
@@ -41,19 +31,15 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[640px] overflow-hidden">
       <motion.div style={{ y: videoY }} className="absolute inset-0 -top-[10%] h-[120%]">
-        {CLIPS.map((src, i) => (
-          <video
-            key={src}
-            src={src}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out"
-            style={{ opacity: active === i ? 1 : 0 }}
-          />
-        ))}
+        <video
+          src={heroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
       </motion.div>
 
       <motion.div
@@ -63,11 +49,6 @@ export function Hero({ whatsapp }: { whatsapp: string }) {
       />
       <div
         className="absolute inset-0 bg-[linear-gradient(to_right,var(--background)_2%,color-mix(in_oklab,var(--background)_55%,transparent)_45%,transparent_80%)]"
-        aria-hidden
-      />
-
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-[image:var(--gradient-fade)]"
         aria-hidden
       />
 

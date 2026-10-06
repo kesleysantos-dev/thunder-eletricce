@@ -33,6 +33,7 @@ import ecovivaHe15 from "@/assets/modelos/Ecoviva HE-15.jpeg";
 import velosterSavage from "@/assets/modelos/Veloster Savage.jpeg";
 import angieAg28 from "@/assets/modelos/Angie AG28.jpeg";
 import velosterSion from "@/assets/modelos/Veloster Sion.jpeg";
+import v8UltraS from "@/assets/modelos/V8 Ultra S.jpeg";
 import { Reveal } from "./Reveal";
 
 export type Spec = { icon: LucideIcon; label: string; value: string };
@@ -107,7 +108,6 @@ export const MODELS: Model[] = [
   {
     name: "Zenvo",
     image: zenvo,
-    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -133,6 +133,7 @@ export const MODELS: Model[] = [
   {
     name: "Global Extreme",
     image: globalExtreme,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Chumbo",
@@ -233,6 +234,7 @@ export const MODELS: Model[] = [
   {
     name: "JE-2",
     image: je2,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -294,6 +296,18 @@ export const MODELS: Model[] = [
       brake: "Bluetooth",
       brakeLabel: "Som",
       brakeIcon: Bluetooth,
+    }),
+  },
+  {
+    name: "V8 Ultra S",
+    image: v8UltraS,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "2 baterias de lítio removíveis",
+      autonomy: "até 90 km",
+      loadCapacity: "—",
+      security: "—",
+      brake: "Disco hidráulico",
     }),
   },
 ];
@@ -638,7 +652,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
             Escolha a sua. <span className="text-gradient-brand">Todas 100% elétricas.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Global Extreme, Veloster
+            {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Veloster
             Savage, Angie AG28, Global 500, Oggi Big Wheel 8.0 e mais. Todas com garantia e
             assistência aqui em Fortaleza.
           </p>

@@ -101,13 +101,11 @@ const FAQ = [
 function Marquee() {
   const items = [
     "Sudu A5",
-    "Global Extreme",
     "Global 500",
     "Patinete P8",
     "Oggi Big Wheel 8.0",
     "Yoo",
     "JE-8",
-    "JE-2",
     "Ecoviva HE-15",
     "Veloster Savage",
     "Angie AG28",
