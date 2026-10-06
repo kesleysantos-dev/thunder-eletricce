@@ -450,7 +450,15 @@ function Index() {
             Todos os direitos reservados.
           </p>
           <p className="mt-1" translate="no">
-            Desenvolvido Por Kesley Santos
+            Desenvolvido Por{" "}
+            <a
+              href="https://portfolio-kesley-santos.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="cursor-pointer transition-colors hover:text-brand-hot"
+            >
+              Kesley Santos
+            </a>
           </p>
         </div>
       </footer>
