@@ -110,6 +110,10 @@ function Marquee() {
     "Veloster Savage",
     "Angie AG28",
     "Veloster Sion",
+    "V8 Ultra S",
+    "Bike Panda GT20",
+    "Triciclo Lupy",
+    "OEK M15",
   ];
   return (
     <div className="relative overflow-hidden border-y border-border bg-surface/60 py-5">

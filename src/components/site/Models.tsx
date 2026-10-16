@@ -34,6 +34,9 @@ import velosterSavage from "@/assets/modelos/Veloster Savage.jpeg";
 import angieAg28 from "@/assets/modelos/Angie AG28.jpeg";
 import velosterSion from "@/assets/modelos/Veloster Sion.jpeg";
 import v8UltraS from "@/assets/modelos/V8 Ultra S.jpeg";
+import bikePandaGt20 from "@/assets/modelos/BIKE PANDA GT20.jpeg";
+import tricicloLupy from "@/assets/modelos/TRICICLO LUPY.jpeg";
+import oekM15 from "@/assets/modelos/OEK M15.jpeg";
 import { Reveal } from "./Reveal";
 
 export type Spec = { icon: LucideIcon; label: string; value: string };
@@ -308,6 +311,42 @@ export const MODELS: Model[] = [
       loadCapacity: "—",
       security: "—",
       brake: "Disco hidráulico",
+    }),
+  },
+  {
+    name: "Bike Panda GT20",
+    image: bikePandaGt20,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 50 km",
+      loadCapacity: "130 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Triciclo Lupy",
+    image: tricicloLupy,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio",
+      autonomy: "até 50 km",
+      loadCapacity: "220 kg",
+      security: "Trava e alarme",
+      brake: "Freio dianteiro a disco hidráulico",
+    }),
+  },
+  {
+    name: "OEK M15",
+    image: oekM15,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
     }),
   },
 ];
