@@ -37,6 +37,7 @@ import v8UltraS from "@/assets/modelos/V8 Ultra S.jpeg";
 import bikePandaGt20 from "@/assets/modelos/BIKE PANDA GT20.jpeg";
 import tricicloLupy from "@/assets/modelos/TRICICLO LUPY.jpeg";
 import oekM15 from "@/assets/modelos/OEK M15.jpeg";
+import tricicloEcovivaXe11 from "@/assets/modelos/Triciclo Ecoviva XE11.jpeg";
 import { Reveal } from "./Reveal";
 
 export type Spec = { icon: LucideIcon; label: string; value: string };
@@ -111,6 +112,7 @@ export const MODELS: Model[] = [
   {
     name: "Zenvo",
     image: zenvo,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -213,6 +215,7 @@ export const MODELS: Model[] = [
   {
     name: "Yoo",
     image: yoo,
+    hidden: true,
     specs: specsV2({
       power: "500 W de pico",
       battery: "Chumbo ácido",
@@ -276,6 +279,7 @@ export const MODELS: Model[] = [
   {
     name: "Angie AG28",
     image: angieAg28,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -345,6 +349,18 @@ export const MODELS: Model[] = [
       battery: "Lítio removível",
       autonomy: "até 70 km",
       loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Triciclo Ecoviva XE11",
+    image: tricicloEcovivaXe11,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "—",
+      loadCapacity: "220 kg",
       security: "Trava e alarme",
       brake: "Freio a disco",
     }),
@@ -692,7 +708,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
             {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Veloster
-            Savage, Angie AG28, Global 500, Oggi Big Wheel 8.0 e mais. Todas com garantia e
+            Savage, Global 500, Oggi Big Wheel 8.0 e mais. Todas com garantia e
             assistência aqui em Fortaleza.
           </p>
         </Reveal>

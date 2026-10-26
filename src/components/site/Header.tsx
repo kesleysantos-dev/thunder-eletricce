@@ -15,7 +15,7 @@ const MODEL_CATEGORIES_RAW = [
     name: "Scooter",
     models: ["Kasper", "Sudu A5", "Zenvo", "Tank", "Global Extreme", "Global 500", "Yoo", "JE-8", "JE-2", "Ecoviva HE-15", "Veloster Savage", "Angie AG28", "Veloster Sion", "V8 Ultra S", "OEK M15"],
   },
-  { name: "Triciclo", models: ["Sudu A13T", "Triciclo Lupy"] },
+  { name: "Triciclo", models: ["Sudu A13T", "Triciclo Lupy", "Triciclo Ecoviva XE11"] },
   { name: "Bicicleta", models: ["Oggi Big Wheel 8.0", "Bike Panda GT20"] },
   { name: "Patinete", models: ["Patinete SE-90", "Patinete P8"] },
 ];
