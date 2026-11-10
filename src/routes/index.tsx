@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Motos, scooters e patinetes elétricos em Fortaleza: Sudu A5, Tank, Global Extreme, Global 500 e mais. Garantia, assistência técnica e test drive com pronta entrega.",
+          "Motos, scooters e patinetes elétricos em Fortaleza: Sudu A5, Tank, Ecoviva BE-300, Veloster Stake e mais. Garantia, assistência técnica e test drive com pronta entrega.",
       },
       { property: "og:title", content: "Thunder Eletric Fortaleza | Motos Elétricas" },
       {
@@ -101,7 +101,7 @@ const FAQ = [
 function Marquee() {
   const items = [
     "Sudu A5",
-    "Global 500",
+    "Patinete SE-90",
     "Patinete P8",
     "Oggi Big Wheel 8.0",
     "JE-8",
@@ -111,8 +111,13 @@ function Marquee() {
     "V8 Ultra S",
     "Bike Panda GT20",
     "Triciclo Lupy",
-    "OEK M15",
     "Triciclo Ecoviva XE11",
+    "Ecoviva BE-5",
+    "Duact Maxus",
+    "Veloster Stake",
+    "OEK Tank",
+    "Ecoviva BE-300",
+    "Ecoviva BE-200",
   ];
   return (
     <div className="relative overflow-hidden border-y border-border bg-surface/60 py-5">

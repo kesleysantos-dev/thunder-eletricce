@@ -38,6 +38,12 @@ import bikePandaGt20 from "@/assets/modelos/BIKE PANDA GT20.jpeg";
 import tricicloLupy from "@/assets/modelos/TRICICLO LUPY.jpeg";
 import oekM15 from "@/assets/modelos/OEK M15.jpeg";
 import tricicloEcovivaXe11 from "@/assets/modelos/Triciclo Ecoviva XE11.jpeg";
+import ecovivaBe5 from "@/assets/modelos/Ecoviva BE-5.jpeg";
+import duactMaxus from "@/assets/modelos/Duact Maxus .jpeg";
+import velosterStake from "@/assets/modelos/Veloster Stake .jpeg";
+import oekTank from "@/assets/modelos/OEK Tank.jpeg";
+import ecovivaBe300 from "@/assets/modelos/Ecoviva BE-300.jpeg";
+import ecovivaBe200 from "@/assets/modelos/Ecoviva BE-200.jpeg";
 import { Reveal } from "./Reveal";
 
 export type Spec = { icon: LucideIcon; label: string; value: string };
@@ -151,19 +157,19 @@ export const MODELS: Model[] = [
   {
     name: "Patinete SE-90",
     image: patineteSe90,
-    hidden: true,
     specs: specsV2({
-      power: "750 W",
+      power: "1000 W",
       battery: "Lítio",
-      autonomy: "50 a 60 km",
-      loadCapacity: "120 kg",
-      security: "Sistema NFC",
+      autonomy: "até 50 km",
+      loadCapacity: "100 kg",
+      security: "Trava e alarme",
       brake: "Freio a disco",
     }),
   },
   {
     name: "Global 500",
     image: global500,
+    hidden: true,
     specs: specsV2({
       power: "500 W",
       battery: "Chumbo",
@@ -344,6 +350,7 @@ export const MODELS: Model[] = [
   {
     name: "OEK M15",
     image: oekM15,
+    hidden: true,
     specs: specsV2({
       power: "1000 W",
       battery: "Lítio removível",
@@ -361,6 +368,78 @@ export const MODELS: Model[] = [
       battery: "Lítio removível",
       autonomy: "—",
       loadCapacity: "220 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Ecoviva BE-5",
+    image: ecovivaBe5,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 90 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Duact Maxus",
+    image: duactMaxus,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "180 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Veloster Stake",
+    image: velosterStake,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "OEK Tank",
+    image: oekTank,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 70 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Ecoviva BE-300",
+    image: ecovivaBe300,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 100 km",
+      loadCapacity: "200 kg",
+      security: "Trava e alarme",
+      brake: "Freio a disco",
+    }),
+  },
+  {
+    name: "Ecoviva BE-200",
+    image: ecovivaBe200,
+    specs: specsV2({
+      power: "1000 W",
+      battery: "Lítio removível",
+      autonomy: "até 100 km",
+      loadCapacity: "200 kg",
       security: "Trava e alarme",
       brake: "Freio a disco",
     }),
@@ -708,7 +787,7 @@ export function Models({ whatsapp }: { whatsapp: string }) {
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
             {VISIBLE_MODELS.length} modelos em linha: Sudu A5, Veloster
-            Savage, Global 500, Oggi Big Wheel 8.0 e mais. Todas com garantia e
+            Savage, Ecoviva BE-300, Oggi Big Wheel 8.0 e mais. Todas com garantia e
             assistência aqui em Fortaleza.
           </p>
         </Reveal>
